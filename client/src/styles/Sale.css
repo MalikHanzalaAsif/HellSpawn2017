@@ -1,0 +1,50 @@
+#saleBtn {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: #DE2104;
+    color: white;
+    border-radius: 4px;
+   }
+   
+   #saleBtn:hover {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, #DE2104 0%, #f7553d 100%);
+   }
+   
+   #saleBtn:active {
+    transform: translate(0em, 0.2em);
+   }
+
+#sale{
+    background-image: url("/img/super-man-bg-low-opacity.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 60vh;
+    font-family: "Kanit", sans-serif;
+    font-style: normal;
+
+}
+
+.saleMainText{
+    -webkit-text-stroke: 4px black; /* Modern browsers */
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black; /* Fallback for older browsers */
+}
+
+#saleUpperText {
+    position: relative;
+    font-size: 1.125rem; /* Adjust the size based on your need */
+    background-color: #94cf1d; /* Background color */
+    color: white;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+

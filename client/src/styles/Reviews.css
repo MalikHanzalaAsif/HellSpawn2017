@@ -1,0 +1,63 @@
+#reviews {
+    width: 100%;
+    overflow: hidden;  /* Hide the overflow to maintain a clean, horizontal scroll */
+  }
+  
+  .reviews-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    overflow: hidden;  /* Prevent scrollbars */
+  }
+  
+  .reviews-wrapper {
+    display: flex;
+    flex-wrap: nowrap;  /* Prevent wrapping of cards */
+    animation: marquee 20s linear infinite; /* Adjust the speed for continuous scrolling */
+  }
+  
+  .review-card {
+    margin-right: 6%;  /* Space between cards */
+    width: 300px;  /* Width of each review card */
+    flex-shrink: 0;  /* Prevent cards from shrinking */
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .reviewDetails {
+    display: flex;
+    align-items: center;
+  }
+  
+  .reviewDetailsIcon img {
+    width: 48px;  /* Adjust the size of the profile image */
+    height: 48px;
+    border-radius: 50%;
+  }
+  
+  .reviewDetailsText {
+    margin-left: 16px;
+  }
+  
+  .reviewMessage {
+    background-color: #f3f4f6;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  /* Keyframes for the infinite scrolling effect */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);  /* Start at the initial position */
+    }
+    100% {
+      transform: translateX(-50%);  /* Move the content to the left */
+    }
+  }
+  

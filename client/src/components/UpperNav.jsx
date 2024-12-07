@@ -3,7 +3,7 @@ import "../styles/UpperNav.css";
 
 const UpperNav = () => {
   return (
-    <div id="upperNav" className='flex justify-between px-6 text-xs h-6 items-center'>
+    <div id="upperNav" className='flex justify-between px-6 text-xs h-6 items-center z-50'>
         <p>FREE DELIVERY OVER $499</p>
         <p>WELLCOME TO HELLSPAWN 2017</p>
         <p>15% OFF ON FIRST ORDER, USE CODE: <b>HS17</b></p>
