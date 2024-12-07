@@ -1,0 +1,19 @@
+#home{
+    background-image: url("/bg-img2.jpg");
+    background-position: center;
+    background-size:contain;
+    height: 100vh;
+}
+
+.homeText{
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: black; /* Text color */
+    -webkit-text-stroke: 2px white; /* Modern browsers */
+    text-shadow: 
+        -1px -1px 0 white, 
+        1px -1px 0 white, 
+        -1px 1px 0 white, 
+        1px 1px 0 white; /* Fallback for older browsers */
+}
