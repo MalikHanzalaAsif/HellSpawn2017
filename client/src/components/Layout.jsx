@@ -12,7 +12,7 @@ const Layout = () => {
         <main style={{flex: "1"}}>
             <Outlet />
         </main>
-        <Footer />
+        <Footer/>
     </div>
   )
 }

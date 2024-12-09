@@ -39,7 +39,7 @@ const Guidance = () => {
                     {questions.map((item, index) => (
                         <div key={index} className="accordion-item mb-4 flex flex-col justify-center">
                             <div
-                                className={`accordion-question text-center bg-gray-100 mx-8 rounded-full  ${activeIndex === index ? "bg-blue-500 text-white" : ""}`}
+                                className={`accordion-question text-center  mx-8 rounded-full  ${activeIndex === index ? "bg-blue-500 text-white" : "text-black bg-gray-100"}`}
                                 onClick={() => toggleAccordion(index)}
                             >
                                 <span>{item.question}</span>

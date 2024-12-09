@@ -66,12 +66,12 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
-            <a
-              href="#about"
-              className="flex items-center text-gray-800  transition-colors"
+            <NavLink
+              to="/about"
+              className={({isActive}) => `${isActive ? "active-link" : ""} flex items-center text-gray-800  transition-colors`}
             >
               <InfoIcon className="mr-2" /> About
-            </a>
+            </NavLink>
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
             <a
