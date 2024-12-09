@@ -17,3 +17,7 @@
         font-size: 8px;
     }
 }
+
+.footerLi{
+   @apply text-sm text-gray-400 hover:text-blue-500 mb-2;
+}

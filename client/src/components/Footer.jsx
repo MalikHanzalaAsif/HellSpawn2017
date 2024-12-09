@@ -16,27 +16,27 @@ const Footer = () => {
             <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64' />
             <ul id="usefullLinks">
                 <h2 className="text-lg font-semibold mb-8">USEFUL LINKS</h2>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Home</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">About</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Shop</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Categories</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Contact</a></li>
+                <li className="footerLi"><a href="">Home</a></li>
+                <li className="footerLi"><a href="">About</a></li>
+                <li className="footerLi"><a href="">Shop</a></li>
+                <li className="footerLi"><a href="">Categories</a></li>
+                <li className="footerLi"><a href="">Contact</a></li>
             </ul>
             <ul id="products">
                 <h2 className="text-lg font-semibold mb-8">PRODUCTS</h2>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Tshirts</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Trousers</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Hoodies</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue- mb-2"><a href="">Jackets</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Sweatshirts</a></li>
+                <li className="footerLi"><a href="">Tshirts</a></li>
+                <li className="footerLi"><a href="">Trousers</a></li>
+                <li className="footerLi"><a href="">Hoodies</a></li>
+                <li className="footerLi"><a href="">Jackets</a></li>
+                <li className="footerLi"><a href="">Sweatshirts</a></li>
             </ul>
             <ul id="resources">
                 <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Community</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Disclaimer</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">License</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Privacy</a></li>
-                <li className="text-sm text-gray-400 hover:text-blue-500 mb-2"><a href="">Partnerships</a></li>
+                <li className="footerLi"><a href="">Community</a></li>
+                <li className="footerLi"><a href="">Disclaimer</a></li>
+                <li className="footerLi"><a href="">License</a></li>
+                <li className="footerLi"><a href="">Privacy</a></li>
+                <li className="footerLi"><a href="">Partnerships</a></li>
             </ul>
             <form id="subscribeToOurNewsLetter" className='flex flex-col mr-4' onSubmit={handleSubmit}>
                 <h2 className="text-lg font-semibold mb-8">SUBSCRIBE TO OUR NEWSLETTER</h2>
@@ -45,13 +45,13 @@ const Footer = () => {
             </form>
         </div>
         <div id="lowerFooter" className='flex justify-between items-center p-4'>
-            <p id="lowerFooterTerms" className="text-sm">Terms & Conditions  |  Privacy Policy</p>
-            <p id="lowerFooterRights" className="text-sm">All RIGHTS RESERVED © 2024 UNIQUE ADVERTISERS</p>
+            <p id="lowerFooterTerms" className="text-xs">Terms & Conditions  |  Privacy Policy</p>
+            <p id="lowerFooterRights" className="text-xs">All RIGHTS RESERVED © 2024 UNIQUE ADVERTISERS</p>
             <div id="lowerFooterIcons" className=''>
-                <FacebookIcon fontSize='large' className='text-white hover:text-black cursor-pointer'/>
-                <InstagramIcon fontSize='large' className='text-white hover:text-black cursor-pointer'/>
-                <XIcon fontSize='large' className='text-white hover:text-black cursor-pointer'/>
-                <YouTubeIcon fontSize='large' className='text-white hover:text-black cursor-pointer'/>
+                <FacebookIcon fontSize='large' className='text-white hover:text-blue-500 cursor-pointer mx-1'/>
+                <InstagramIcon fontSize='large' className='text-white hover:text-pink-600 cursor-pointer mx-1'/>
+                <XIcon fontSize='large' className='text-white hover:text-black cursor-pointer mx-1'/>
+                <YouTubeIcon fontSize='large' className='text-white hover:text-red-700 cursor-pointer mx-1'/>
             </div>
         </div>
     </footer>
