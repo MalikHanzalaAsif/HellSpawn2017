@@ -12,7 +12,7 @@ const Reviews = () => {
   return (
     <>
       <h1 className='text-3xl text-center my-8 font-semibold'>SEE WHAT PEOPLE ARE SAYING</h1>
-      <section id='reviews' className='reviews-container'>
+      <section id='reviews' className='reviews-container mb-16'>
         <div className="reviews-wrapper">
           {reviews.concat(reviews).map((review, idx) => (
             <div className="review-card" key={idx}>
@@ -25,7 +25,7 @@ const Reviews = () => {
                   <p className='text-gray-400 text-sm'>{review.role}</p>
                 </div>
               </div>
-              <div className="reviewMessage w-96 mt-4 text-sm bg-gray-100 p-6 rounded-xl">
+              <div className="reviewMessage w-96 mt-4 text-sm bg-gray-100 p-6 rounded-xl hover:bg-blue-500 hover:text-white">
                 {review.message}
               </div>
             </div>

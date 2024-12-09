@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import UpperNav from './upperNav';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Layout = () => {
   return (
@@ -11,6 +12,7 @@ const Layout = () => {
         <main style={{flex: "1"}}>
             <Outlet />
         </main>
+        <Footer />
     </div>
   )
 }

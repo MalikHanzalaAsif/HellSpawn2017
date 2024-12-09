@@ -1,0 +1,21 @@
+#lowerFooter{
+    background-color: #94cf1d;
+}
+
+@media(width < 1000px) {
+    #upperFooter{
+        flex-direction: column;
+    }
+    #upperFooter ul, #upperFooter img{
+        margin-bottom: 24px;
+    }
+}
+
+@media(width < 800px){
+    #lowerFooter{
+        flex-direction: column;
+    }
+    #lowerFooter p {
+        margin-bottom: 16px;
+    }
+}
