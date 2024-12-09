@@ -1,4 +1,4 @@
-import '../styles/Button.css'
+import '../styles/Button.css';
 
 export default function Button() {
   return (
@@ -7,7 +7,7 @@ export default function Button() {
         <span class="btn-title whitespace-nowrap">Shop Now</span>
         <span class="icon-arrow">
           <svg
-            width="66px"
+            width="3rem"
             height="43px"
             viewBox="0 0 66 43"
             version="1.1"
