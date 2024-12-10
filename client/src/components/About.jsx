@@ -7,7 +7,7 @@ import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 
 const About = () => {
   return (
-    <section id='about' className='flex justify-evenly flex-wrap border-y-2 border-blue-500'>
+    <section id='about' className='flex justify-evenly flex-wrap border-y-2 border-blue-500 shadow-lg'>
         <div id='box1' className="flex justify-center items-center p-8">
             <div className="aboutIcon">
                 <LocalShippingOutlinedIcon className="m-4"/>

@@ -33,7 +33,7 @@ const Guidance = () => {
     };
     return (
         <>
-            <h1 className='text-4xl font-semibold my-8 text-center'>NEED GUIDANCE? WE'VE</h1>
+            <h1 className='text-4xl font-semibold my-8 text-center'>NEED GUIDANCE? WE'VE PROVIDED</h1>
             <section id='guidance' className='flex justify-between w-full mb-16'>
                 <div className="accordion-container">
                     {questions.map((item, index) => (
