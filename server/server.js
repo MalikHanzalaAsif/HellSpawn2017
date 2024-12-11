@@ -7,18 +7,18 @@ import nodemailer from "nodemailer";
 // MIDDLEWARES
 // to allow requests from frontend request
 app.use(cors({
-  origin: 'http://localhost:5173' 
+    origin: 'http://localhost:5173'
 }));
 
 // For parsing the urlencoded data of post req body;
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
 
 // For parsing the json data of post req body;
 app.use(express.json());
 
 
-app.post('/order',(req,res) => {
-    try{
+app.post('/order', (req, res) => {
+    try {
         console.log(req.body);
         let { name, email, number, message } = req.body;
         // Send Email
@@ -29,19 +29,19 @@ app.post('/order',(req,res) => {
                 pass: "batz xhng jfpi okef",
             },
         });
-        
+
         const mailOptions = {
             from: "phantompubgm613@gmail.com",
             to: "malikhanzalaasif@gmail.com",
             subject: "New Order on HellSpawn2017",
             text: `
-            name: ${name}
+                   name: ${name}
                    email: ${email}  
                    message: ${message}
                    Contact: ${number}
                    `
         };
-        
+
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log("Error sending email:", error);
@@ -49,7 +49,7 @@ app.post('/order',(req,res) => {
                 console.log("Email sent successfully:", info.response);
             }
         });
-        res.json({"success": "order placed succesfully :)"})
+        res.json({ "success": "order placed succesfully :)" })
     } catch (err) {
         next(err);
     }
@@ -65,12 +65,12 @@ app.all("*", (req, res, next) => {
 });
 
 // ERROR HANDLING MIDDLEWARE
-app.use((err,req,res,next) => {
-    res.status(err.status || 400).json({"error": err.message});
+app.use((err, req, res, next) => {
+    res.status(err.status || 400).json({ "error": err.message });
     console.log(err.message);
     // res.status(err.status || 500).send(err.message || "something went wrong!");
 });
 
-app.listen(port,() => {
+app.listen(port, () => {
     console.log(`app is listening to port: ${port}!`);
 });
