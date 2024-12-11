@@ -8,7 +8,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 const Order = () => {
-    let fetchUrl = "http://localhost:8080";
+    let fetchUrl = "http://localhost:8081";
     let [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -33,7 +33,7 @@ const Order = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await fetch(`${fetchUrl}/contact`, {
+            const response = await fetch(`${fetchUrl}/order`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
