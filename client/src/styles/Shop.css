@@ -8,11 +8,13 @@
     display: none; /* Chrome, Safari, Edge */
 }
 
-.scrollable-container img:hover{
-    scale: 0.9;
-    transition: 0.3s ease;
+.shopImageDiv{
+    transition: 0.3s ease-in-out;
 }
 
+.shopImageDiv:hover{
+    transform: translateY(-10px);
+}
 /* From Uiverse.io by cssbuttons-io */ 
 .show-more {
     position: relative;
@@ -103,5 +105,7 @@
    }
 
    .shopHeading{
-    background-color: #DE2104;
+    font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
    }

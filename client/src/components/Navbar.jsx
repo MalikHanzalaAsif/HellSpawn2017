@@ -16,6 +16,10 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   // Close menu if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,7 +35,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className=" shadow-md p-4">
+    <nav className="shadow-md p-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
@@ -52,23 +56,30 @@ export default function Navbar() {
 
         {/* Links */}
         <ul
-        id="hamburgerList"
+          id="hamburgerList"
           ref={menuRef}
           className={`lg:flex lg:items-center lg:space-x-6 absolute lg:static lg:bg-transparent w-full left-0 lg:w-auto z-10 transition-transform transform ${
             isOpen ? "translate-y-10" : "-translate-y-full"
-          } lg:translate-y-0 -z-10`}
+          } lg:translate-y-0`}
         >
           <li className="m-2 lg:m-0 cursor-pointer">
             <NavLink
               to="/"
-              className={({isActive}) => `${isActive ? "active-link" : ""} flex items-center text-gray-800  transition-colors`}            >
+              onClick={handleCloseMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+              }
+            >
               <HomeIcon className="mr-2" /> Home
             </NavLink>
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
             <NavLink
               to="/about"
-              className={({isActive}) => `${isActive ? "active-link" : ""} flex items-center text-gray-800  transition-colors`}
+              onClick={handleCloseMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+              }
             >
               <InfoIcon className="mr-2" /> About
             </NavLink>
@@ -76,17 +87,23 @@ export default function Navbar() {
           <li className="m-2 lg:m-0 cursor-pointer">
             <NavLink
               to="/shop"
-              className={({isActive}) => `${isActive ? "active-link" : ""} flex items-center text-gray-800  transition-colors`}
+              onClick={handleCloseMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+              }
             >
               <ShoppingCartIcon className="mr-2" /> Shop
             </NavLink>
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
             <NavLink
-              to="/contact"
-              className={({isActive}) => `${isActive ? "active-link" : ""} flex items-center text-gray-800  transition-colors`}
+              to="/order"
+              onClick={handleCloseMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+              }
             >
-              <ContactMailIcon className="mr-2" /> Contact
+              <ContactMailIcon className="mr-2" /> Order Now
             </NavLink>
           </li>
         </ul>

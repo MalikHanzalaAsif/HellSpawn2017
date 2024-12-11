@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import "../styles/Shop.css";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Shop = () => {
+    const [likedItems, setLikedItems] = useState({}); // Object to track liked items
     const tshirtsRef = useRef(null);
     const trousersRef = useRef(null);
     const hoodiesRef = useRef(null);
@@ -17,6 +20,15 @@ const Shop = () => {
         }
     };
 
+    const toggleLike = (type, index) => {
+        // Create a unique key for each item
+        const key = `${type}-${index}`;
+        setLikedItems((prev) => ({
+            ...prev,
+            [key]: !prev[key], // Toggle the like state
+        }));
+    };
+
     const categories = [
         { id: 'shopTshirts', title: 'TShirts', ref: tshirtsRef, type: 'tshirt' },
         { id: 'shopTrousers', title: 'Trousers', ref: trousersRef, type: 'trouser' },
@@ -25,12 +37,12 @@ const Shop = () => {
 
     return (
         <section id="shop" className="pt-32">
-            <h1 className="mt-8 mb-16 text-5xl font-semibold text-center">Shop By Categories</h1>
+            <h1 className="shopHeading mt-8 mb-16 text-5xl font-semibold text-center">Shop By Categories</h1>
 
             {categories.map(({ id, title, ref, type }) => (
                 <div id={id} className="mb-16" key={id}>
-                    <h2 className="shopHeading text-5xl text-white mb-8 p-2 text-center">{title}</h2>
-                   <p className='text-center'><i className=' text-lg font-semibold'>45% OFF</i></p> 
+                    <h2 className="shopHeading text-6xl mb-8 p-2 text-center text-red-500">{title}</h2>
+                    <p className="text-center"><i className="text-lg font-semibold">30% OFF</i></p>
                     <div className="relative">
                         {/* Scroll Buttons */}
                         <button
@@ -49,23 +61,39 @@ const Shop = () => {
                         {/* Scrollable Container */}
                         <div
                             ref={ref}
-                            className="scrollable-container flex overflow-x-scroll gap-4 scroll-smooth hide-scrollbar"
+                            className="scrollable-container flex overflow-x-scroll gap-4 scroll-smooth hide-scrollbar border-y-2 py-8 border-dashed shadow-md"
                         >
                             {Array.from({ length: 15 }, (_, index) => (
-                                <img
+                                <div
                                     key={index}
-                                    src={`/mockups/${type}${index + 1}.png`}
-                                    alt={`${title} ${index + 1}`}
-                                    className="w-36 h-36 m-2 p-4 object-cover rounded-md shadow-md flex-shrink-0"
-                                />
+                                    className="shopImageDiv w-36 h-56 m-2 p-4 object-cover rounded-md shadow-lg flex-shrink-0 relative flex flex-col justify-center items-center"
+                                >
+                                    <button
+                                        onClick={() => toggleLike(type, index)}
+                                        className="absolute top-2 right-2 bg-white rounded-full p-1"
+                                    >
+                                        {likedItems[`${type}-${index}`] ? (
+                                            <FavoriteIcon className="text-red-500" />
+                                        ) : (
+                                            <FavoriteBorderIcon />
+                                        )}
+                                    </button>
+                                    <img
+                                        src={`/mockups/${type}${index + 1}.png`}
+                                        alt={`${title} ${index + 1}`}
+                                        className=""
+                                    />
+                                </div>
                             ))}
                         </div>
-                        <button className="show-more relative left-[41%] mt-8">
-                            <span className="circle" aria-hidden="true">
-                                <span className="icon arrow"></span>
-                            </span>
-                            <span className="button-text">Show More</span>
-                        </button>
+                        <div className="flex justify-center items-center">
+                            <button className="show-more mt-8">
+                                <span className="circle" aria-hidden="true">
+                                    <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">Show More</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             ))}

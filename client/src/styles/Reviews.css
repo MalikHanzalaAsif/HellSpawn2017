@@ -18,7 +18,7 @@
   }
   
   .review-card {
-    margin-right: 6%;  /* Space between cards */
+    margin-right: 150px;  /* Space between cards */
     width: 300px;  /* Width of each review card */
     flex-shrink: 0;  /* Prevent cards from shrinking */
     display: flex;
@@ -61,3 +61,13 @@
     }
   }
   
+  @media (width > 1024px) {
+    .review-card{
+      margin-right: 200px;
+    }
+  }
+  @media (width > 1500px) {
+    .review-card{
+      margin-right: 300px;
+    }
+  }

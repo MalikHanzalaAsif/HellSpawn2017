@@ -9,7 +9,7 @@ const Layout = () => {
     <div id="app" style={{ height: "100%", display: 'flex', flexDirection: "column" }}>
         <UpperNav />
         <Navbar />
-        <main style={{flex: "1"}}>
+        <main style={{flex: "1"}} className='mb-32'>
             <Outlet />
         </main>
         <Footer/>

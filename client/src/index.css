@@ -18,6 +18,17 @@
     }
 }
 
+@media (width > 1024px){
+    html{
+        font-size: 18px;
+    }
+}
+@media (width > 1500px){
+    html{
+        font-size: 24px;
+    }
+}
+
 .footerLi{
    @apply text-sm text-gray-400 hover:text-blue-500 mb-2;
 }
