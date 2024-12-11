@@ -3,7 +3,7 @@ import '../styles/Button.css';
 export default function Button() {
   return (
     <div class="btn-conteiner ">
-      <a class="btn-content hover:text-white" href="#">
+      <a class="btn-content hover:text-white" href="#itemsHeading">
         <span class="btn-title whitespace-nowrap">Shop Now</span>
         <span class="icon-arrow">
           <svg

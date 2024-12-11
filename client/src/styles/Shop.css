@@ -15,7 +15,6 @@
 .shopImageDiv:hover{
     transform: translateY(-10px);
 }
-/* From Uiverse.io by cssbuttons-io */ 
 .show-more {
     position: relative;
     display: inline-block;

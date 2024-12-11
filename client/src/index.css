@@ -32,3 +32,8 @@
 .footerLi{
    @apply text-sm text-gray-400 hover:text-blue-500 mb-2;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+  
