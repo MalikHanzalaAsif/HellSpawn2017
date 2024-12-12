@@ -18,12 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 // For parsing the json data of post req body;
 app.use(express.json());
 
-
-app.post('/order', (req, res) => {
+app.post('/order', async (req, res, next) => {
     try {
         console.log(req.body);
-        let { name, email, number, message } = req.body;
-        // Send Email
+        const { name, email, number, message } = req.body;
+
+        // Set up Nodemailer transporter
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -32,6 +32,7 @@ app.post('/order', (req, res) => {
             },
         });
 
+        // Email options
         const mailOptions = {
             from: process.env.FROM_EMAIL,
             to: process.env.TO_EMAIL,
@@ -44,19 +45,16 @@ app.post('/order', (req, res) => {
                    `
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log("Error sending email:", error);
-            } else {
-                console.log("Email sent successfully:", info.response);
-            }
-        });
-        res.json({ "success": "order placed succesfully :)" })
+        // Send email asynchronously
+        const info = await transporter.sendMail(mailOptions);
+
+        console.log("Email sent successfully:", info.response);
+        res.json({ success: "Order placed successfully :)" });
     } catch (err) {
-        next(err);
+        console.error("Error sending email:", err);
+        next(err); // Pass the error to the error-handling middleware
     }
 });
-
 
 // Error Middlewares
 // UNKNOWN PATH ERROR MIDDLEWARE
@@ -68,11 +66,10 @@ app.all("*", (req, res, next) => {
 
 // ERROR HANDLING MIDDLEWARE
 app.use((err, req, res, next) => {
-    res.status(err.status || 400).json({ "error": err.message });
+    res.status(err.status || 400).json({ error: err.message });
     console.log(err.message);
-    // res.status(err.status || 500).send(err.message || "something went wrong!");
 });
 
 app.listen(port, () => {
-    console.log(`app is listening to port: ${port}!`);
+    console.log(`App is listening to port: ${port}!`);
 });
