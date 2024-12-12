@@ -69,66 +69,67 @@ const Shop = () => {
                             className="scrollable-container flex overflow-x-scroll gap-4 scroll-smooth hide-scrollbar border-y-2 py-8 border shadow-md"
                         >
                             {Array.from({ length: 15 }, (_, index) => (
-                                <Link to={"/order"}>
-                                <div>
-                                    <div
-                                        key={index}
-                                        className="shopImageDiv w-36 h-56 m-2 p-4 object-cover rounded-md shadow-lg flex-shrink-0 relative flex flex-col justify-center items-center"
-                                    >
-                                        <button
-                                            onClick={() => toggleLike(type, index)}
-                                            className="absolute top-2 right-2 bg-white rounded-full p-1"
+                                <Link to={"/order"} key={index}>
+                                    <div>
+                                        <div
+                                            className="shopImageDiv w-36 h-56 m-2 p-4 object-cover rounded-md shadow-lg flex-shrink-0 relative flex flex-col justify-center items-center"
                                         >
-                                            {likedItems[`${type}-${index}`] ? (
-                                                <FavoriteIcon className="text-red-500" />
-                                            ) : (
-                                                <FavoriteBorderIcon />
-                                            )}
-                                        </button>
-                                        <img
-                                            src={`/mockups/${type}${index + 1}.png`}
-                                            alt={`${title} ${index + 1}`}
-                                            className=""
-                                        />
-                                        {/* <div className='flex'> */}
-                                        <button
-                                            class="group cursor-pointer outline-none hover:rotate-90 duration-300 mt-4 ml-[100%]"
-                                            title="Add New"
-                                        >
-                                            <svg
-                                                class="stroke-red-900 fill-none group-hover:fill-red-400 group-active:stroke-red-200 group-active:fill-red-400 group-active:duration-0 duration-300"
-                                                viewBox="0 0 24 24"
-                                                height="1.5rem"
-                                                width="1.5rem"
-                                                xmlns="http://www.w3.org/2000/svg"
+                                            <button
+                                                onClick={(event) => {
+                                                    event.preventDefault(); // Prevent the default link behavior
+                                                    event.stopPropagation(); // Stop the event from bubbling up
+                                                    toggleLike(type, index);
+                                                }}
+                                                className="absolute top-2 right-2 bg-white rounded-full p-1"
                                             >
-                                                <path
-                                                    stroke-width="1.5"
-                                                    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                                                ></path>
-                                                <path stroke-width="1.5" d="M8 12H16"></path>
-                                                <path stroke-width="1.5" d="M12 16V8"></path>
-                                            </svg>
-                                        </button>
-
-                                        {/* </div> */}
+                                                {likedItems[`${type}-${index}`] ? (
+                                                    <FavoriteIcon className="text-red-500" />
+                                                ) : (
+                                                    <FavoriteBorderIcon />
+                                                )}
+                                            </button>
+                                            <img
+                                                src={`/mockups/${type}${index + 1}.png`}
+                                                alt={`${title} ${index + 1}`}
+                                                className=""
+                                            />
+                                            <button
+                                                className="group cursor-pointer outline-none hover:rotate-90 duration-300 mt-4 ml-[100%]"
+                                                title="Add New"
+                                            >
+                                                <svg
+                                                    className="stroke-red-900 fill-none group-hover:fill-red-400 group-active:stroke-red-200 group-active:fill-red-400 group-active:duration-0 duration-300"
+                                                    viewBox="0 0 24 24"
+                                                    height="1.5rem"
+                                                    width="1.5rem"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        strokeWidth="1.5"
+                                                        d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                                    ></path>
+                                                    <path strokeWidth="1.5" d="M8 12H16"></path>
+                                                    <path strokeWidth="1.5" d="M12 16V8"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div className="flex justify-center items-center">
+                                            <Rating
+                                                name="read-only"
+                                                value={5}
+                                                readOnly
+                                                sx={{
+                                                    "& .MuiRating-iconFilled": { color: "#94cf1d", fontSize: "16px" },
+                                                    "& .MuiRating-iconEmpty": { color: "lightgray", fontSize: "16px" },
+                                                }}
+                                                className="mt-2"
+                                            />
+                                        </div>
                                     </div>
-                                    <div className='flex justify-center items-center'>
-                                        <Rating
-                                            name="read-only"
-                                            value={5}
-                                            readOnly
-                                            sx={{
-                                                "& .MuiRating-iconFilled": { color: "#94cf1d", fontSize: "16px" },
-                                                "& .MuiRating-iconEmpty": { color: "lightgray", fontSize: "16px" },
-                                            }}
-                                            className='mt-2'
-                                        />
-
-                                    </div>
-                                </div>
                                 </Link>
                             ))}
+
+
                         </div>
                         <div className='flex justify-center items-center mt-6'>
                             <button id='saleBtn' className=''>
