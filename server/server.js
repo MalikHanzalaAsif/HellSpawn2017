@@ -25,20 +25,20 @@ app.post('/order', (req, res) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "phantompubgm613@gmail.com",
-                pass: "batz xhng jfpi okef",
+                user: "hellspawn2370@gmail.com",
+                pass: "ali2001hasan",
             },
         });
 
         const mailOptions = {
-            from: "phantompubgm613@gmail.com",
+            from: "hellspawn2370@gmail.com",
             to: "malikhanzalaasif@gmail.com",
             subject: "New Order on HellSpawn2017",
             text: `
-                   name: ${name}
-                   email: ${email}  
-                   message: ${message}
-                   Contact: ${number}
+                   NAME: ${name}
+                   EMAIL: ${email}
+                   MESSAGE: ${message}
+                   CONTACT: ${number}
                    `
         };
 
