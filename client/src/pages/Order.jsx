@@ -80,7 +80,7 @@ const Order = () => {
                 </Collapse>
 
                 <section className='w-full h-full lg:flex lg:justify-around items-center pb-8'>
-                    <form action="" id="orderForm" className="flex lg:w-2/5 flex-col" onSubmit={handleSubmit}>
+                    <form action="" id="orderForm" className="flex lg:w-2/5 flex-col justify-center" onSubmit={handleSubmit}>
                         <TextField
                             label="Full Name"
                             variant="outlined"
@@ -100,19 +100,19 @@ const Order = () => {
                             value={formData.email} style={{margin: "0.5rem"}}
                         />
                         <PhoneInput
-                            className="ml-2 m-2"
+                            className="orderPhoneInput relative ml-2"
                             value={formData.number}
                             onChange={handlePhoneChange} // Use custom handler for PhoneInput
                             inputStyle={{
-                                width: '97%',
-                                padding: '10px',
-                                fontSize: '16px',
-                                paddingLeft: "42px",
+                                width: '96%',
+                                padding: '0.7rem',
+                                fontSize: '1rem',
+                                paddingLeft: "5rem",
                                 backgroundColor: "transparent",
                                 outline: "1px solid gray",
                                 height: "50px",
                             }}
-                            placeholder="Enter your phone number"
+                            placeholder="Contact Number"
                             enableSearch
                             name="number"
                         />

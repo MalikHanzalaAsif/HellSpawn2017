@@ -26,7 +26,7 @@ app.post('/order', (req, res) => {
             service: "gmail",
             auth: {
                 user: "hellspawn2370@gmail.com",
-                pass: "ali2001hasan",
+                pass: "joor tcyv pyag nmlh",
             },
         });
 
