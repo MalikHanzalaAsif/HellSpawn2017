@@ -3,7 +3,6 @@ import "../styles/Shop.css";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from "react-router-dom";
 
 
