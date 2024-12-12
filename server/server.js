@@ -3,11 +3,13 @@ const app = express();
 const port = 8081;
 import cors from "cors";
 import nodemailer from "nodemailer";
+import dotenv from 'dotenv';
+dotenv.config();
 
 // MIDDLEWARES
 // to allow requests from frontend request
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: process.env.CLIENT_URL,
 }));
 
 // For parsing the urlencoded data of post req body;
@@ -25,14 +27,14 @@ app.post('/order', (req, res) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "hellspawn2370@gmail.com",
-                pass: "joor tcyv pyag nmlh",
+                user: process.env.FROM_EMAIL,
+                pass: process.env.FROM_EMAIL_PASS,
             },
         });
 
         const mailOptions = {
-            from: "hellspawn2370@gmail.com",
-            to: "malikhanzalaasif@gmail.com",
+            from: process.env.FROM_EMAIL,
+            to: process.env.TO_EMAIL,
             subject: "New Order on HellSpawn2017",
             text: `
                    NAME: ${name}

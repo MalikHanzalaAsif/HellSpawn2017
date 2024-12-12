@@ -73,7 +73,7 @@ const Order = () => {
                         variant='filled'
                         severity={alertMsg?.severity}
                         onClose={() => setAlertMsg(null)}
-                        className="z-100 w-2/5 mx-auto mb-16"
+                        className="z-100 w-5/5 mx-auto mb-16 md:w-4/5 lg:w-3/5"
                     >
                         {alertMsg?.text}
                     </Alert>
