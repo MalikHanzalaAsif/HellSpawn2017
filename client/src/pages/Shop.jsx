@@ -4,6 +4,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Link } from "react-router-dom";
+
+
+
 const Shop = () => {
     const [likedItems, setLikedItems] = useState({}); // Object to track liked items
     const tshirtsRef = useRef(null);
@@ -65,6 +69,7 @@ const Shop = () => {
                             className="scrollable-container flex overflow-x-scroll gap-4 scroll-smooth hide-scrollbar border-y-2 py-8 border shadow-md"
                         >
                             {Array.from({ length: 15 }, (_, index) => (
+                                <Link to={"/order"}>
                                 <div>
                                     <div
                                         key={index}
@@ -122,6 +127,7 @@ const Shop = () => {
 
                                     </div>
                                 </div>
+                                </Link>
                             ))}
                         </div>
                         <div className='flex justify-center items-center mt-6'>
