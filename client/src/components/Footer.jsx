@@ -4,6 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import "../styles/Footer.css";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     function handleSubmit(e) {
@@ -16,19 +17,19 @@ const Footer = () => {
             <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64' />
             <ul id="usefullLinks">
                 <h2 className="text-lg font-semibold mb-8">USEFUL LINKS</h2>
-                <li className="footerLi"><a href="">Home</a></li>
-                <li className="footerLi"><a href="">About</a></li>
-                <li className="footerLi"><a href="">Shop</a></li>
-                <li className="footerLi"><a href="">Categories</a></li>
-                <li className="footerLi"><a href="">Contact</a></li>
+                <li className="footerLi"><Link to="/">Home</Link></li>
+                <li className="footerLi"><Link to="/about">About</Link></li>
+                <li className="footerLi"><Link to="/shop">Shop</Link></li>
+                <li className="footerLi"><Link to="/shop">Categories</Link></li>
+                <li className="footerLi"><Link to="/order">Contact</Link></li>
             </ul>
             <ul id="products">
                 <h2 className="text-lg font-semibold mb-8">PRODUCTS</h2>
-                <li className="footerLi"><a href="">Tshirts</a></li>
-                <li className="footerLi"><a href="">Trousers</a></li>
-                <li className="footerLi"><a href="">Hoodies</a></li>
-                <li className="footerLi"><a href="">Jackets</a></li>
-                <li className="footerLi"><a href="">Sweatshirts</a></li>
+                <li className="footerLi"><Link to="/shop">Tshirts</Link></li>
+                <li className="footerLi"><Link to="/shop">Trousers</Link></li>
+                <li className="footerLi"><Link to="/shop">Hoodies</Link></li>
+                <li className="footerLi"><Link to="/shop">Jackets</Link></li>
+                <li className="footerLi"><Link to="/shop">Sweatshirts</Link></li>
             </ul>
             <ul id="resources">
                 <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
@@ -41,7 +42,7 @@ const Footer = () => {
             <form id="subscribeToOurNewsLetter" className='flex flex-col mr-4' onSubmit={handleSubmit}>
                 <h2 className="text-lg font-semibold mb-8">SUBSCRIBE TO OUR NEWSLETTER</h2>
                 <input type="email" name="email" id="footerEmail" placeholder='write your email..' className='mb-4 p-2 rounded-full pl-4 placeholder:text-xs'/>
-                <button type='Submit' id='footerFormSubmitButton' className='mb-4 w-full bg-red-600 text-white p-2 rounded-full hover:opacity-[0.9] text-sm'>SUBMIT</button>
+                <button type='Submit' id='footerFormSubmitButton' className='mb-4 w-full bg-red-600 text-white p-2 rounded-full hover:opacity-[0.9] text-sm'><Link to="/order">SUBMIT</Link></button>
             </form>
         </div>
         <div id="lowerFooter" className='flex justify-between items-center p-4'>

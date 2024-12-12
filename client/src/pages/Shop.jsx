@@ -86,13 +86,10 @@ const Shop = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-center items-center">
-                            <button className="show-more mt-8">
-                                <span className="circle" aria-hidden="true">
-                                    <span className="icon arrow"></span>
-                                </span>
-                                <span className="button-text">Show More</span>
-                            </button>
+                        <div className='flex justify-center items-center mt-6'>
+                        <button id='saleBtn' className=''>
+                            See more in {title}
+                        </button>
                         </div>
                     </div>
                 </div>

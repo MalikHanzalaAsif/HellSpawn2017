@@ -5,11 +5,13 @@ import Content from './components/Content';
 import AboutUs from './pages/AboutUs';
 import Shop from './pages/Shop';
 import Order from './pages/Order';
+import ScrollOnTop from './utils/ScrollOnTop';
 
 function App() {
   return (
     <>
       <Router>
+        <ScrollOnTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Content />} />

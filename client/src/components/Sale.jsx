@@ -1,5 +1,6 @@
 import React from 'react';
 import "../styles/Sale.css";
+import { Link } from 'react-router-dom';
 
 const Sale = () => {
     return (
@@ -10,7 +11,7 @@ const Sale = () => {
             <h1 className='saleMainText text-7xl font-extrabold spacing tracking-widest text-white leading-tight'>30% OFF</h1>
             <h1 className='saleMainText text-7xl font-extrabold spacing tracking-widest text-white leading-tight'>SALE</h1>
             <button id='saleBtn'> 
-                SHOW NOW
+               <Link to={"/shop"}> SHOW NOW</Link>
             </button>
         </section>
     )

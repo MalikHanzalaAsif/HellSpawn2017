@@ -3,6 +3,7 @@ import "../styles/Items.css";
 import items from '../utils/items';
 import Rating from '@mui/material/Rating';
 import AddToCartBtn from "./AddToCartBtn";
+import { Link } from 'react-router-dom';
 
 const Items = () => {
     return (
@@ -49,7 +50,7 @@ const Items = () => {
                         <span className="circle" aria-hidden="true">
                             <span className="icon arrow"></span>
                         </span>
-                        <span className="button-text">Show More</span>
+                        <Link className="button-text" to="/shop">Show More</Link>
                     </button>
                 </div>
         </>
