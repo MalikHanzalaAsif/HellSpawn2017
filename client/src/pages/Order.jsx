@@ -57,7 +57,7 @@ const Order = () => {
             alertRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         } catch (error) {
             console.error("Form submission error:", error);
-            setAlertMsg({ severity: "error", text: "Something went wrong. Please try again." });
+            setAlertMsg({ severity: "error", text: "Something went wrong! Please try again Later." });
         } finally {
             setIsLoading(false);
         }
