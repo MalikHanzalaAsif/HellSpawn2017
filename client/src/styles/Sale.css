@@ -1,9 +1,9 @@
 #saleBtn {
-    font-size: 17px;
-    padding: 0.5em 2em;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
     border: transparent;
     box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-    background: #DE2104;
+    background: #ad1700;
     color: white;
     border-radius: 4px;
    }
