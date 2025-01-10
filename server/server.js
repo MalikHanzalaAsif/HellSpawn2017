@@ -4,7 +4,7 @@ const port = 8081;
 import cors from "cors";
 import dotenv from 'dotenv';
 dotenv.config();
-import orderRoutes from "./routes/orderRoutes.js"
+import orderRoutes from "./routes/contactRoutes.js"
 
 // MIDDLEWARES
 app.use(cors({
@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 // ROUTES
-app.use("/order", orderRoutes);
+app.use("/contact", orderRoutes);
 
 // Error Middlewares
 // UNKNOWN PATH ERROR MIDDLEWARE

@@ -7,7 +7,7 @@ import { Collapse } from "@mui/material";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-const Order = () => {
+const Contact = () => {
     let fetchUrl = "http://localhost:8081";
     let [formData, setFormData] = useState({
         name: "",
@@ -33,7 +33,7 @@ const Order = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await fetch(`${fetchUrl}/order`, {
+            const response = await fetch(`${fetchUrl}/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -66,7 +66,7 @@ const Order = () => {
     return (
         <>
             <div className='pt-32 h-full mb-32' id='order'>
-                <h1 className='orderNowHeading text-center text-7xl font-semibold mb-2'>Order Now</h1>
+                <h1 className='orderNowHeading text-center text-7xl font-semibold mb-2'>Contact Us</h1>
                 <p className='text-center text-md font-mono mb-16'>Please ensure that the information you provided is correct.</p>
                 <Collapse in={!!alertMsg} ref={alertRef}>
                     <Alert
@@ -138,4 +138,4 @@ const Order = () => {
     );
 };
 
-export default Order;
+export default Contact;

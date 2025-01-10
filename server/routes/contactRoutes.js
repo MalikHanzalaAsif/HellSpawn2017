@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { sendEmail } from '../controllers/orderController.js';
+import { sendEmail } from '../controllers/contactController.js';
 import asyncWrap from '../utils/asyncWrap.js';
 
 // ROUTES

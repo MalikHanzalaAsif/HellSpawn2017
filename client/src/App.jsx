@@ -4,7 +4,7 @@ import Layout from './components/Layout';
 import Content from './components/Content';
 import AboutUs from './pages/AboutUs';
 import Shop from './pages/Shop';
-import Order from './pages/Order';
+import Contact from './pages/Contact';
 import ScrollOnTop from './utils/ScrollOnTop';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
             <Route index element={<Content />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/shop" element={<Shop />} />
-            <Route path="/order" element={<Order />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>
       </Router>

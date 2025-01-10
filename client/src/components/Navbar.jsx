@@ -97,13 +97,13 @@ export default function Navbar() {
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
             <NavLink
-              to="/order"
+              to="/contact"
               onClick={handleCloseMenu}
               className={({ isActive }) =>
                 `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
               }
             >
-              <ContactMailIcon className="mr-2" /> Order Now
+              <ContactMailIcon className="mr-2" /> Contact Us
             </NavLink>
           </li>
         </ul>
