@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs';
 import Shop from './pages/Shop';
 import Contact from './pages/Contact';
 import ScrollOnTop from './utils/ScrollOnTop';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
       </Router>
