@@ -1,14 +1,24 @@
 #home{
-    background-image: url("/bg-img2.jpg");
+    background-image: url("/bg-img.png");
     background-position: center;
-    background-size:contain;
+    background-size:cover;
+    background-repeat: no-repeat;
     height: 100vh;
 }
 
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../assets/fonts/COUBRAFONT.woof2') format('woff2'),
+         url('../assets/fonts/COUBRAFONT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; 
+  }
+
 .homeText{
-    font-family: "Charm", cursive;
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'MyCustomFont', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
     color: black; /* Text color */
     -webkit-text-stroke: 0px white; /* Modern browsers */
     text-shadow: 
@@ -16,4 +26,5 @@
         1px -1px 0 white, 
         -1px 1px 0 white, 
         1px 1px 0 white; /* Fallback for older browsers */
+        letter-spacing: 0.2rem;
 }
