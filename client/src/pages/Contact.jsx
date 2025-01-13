@@ -65,7 +65,7 @@ const Contact = () => {
 
     return (
         <>
-            <div className='pt-32 h-full mb-32' id='order'>
+            <div className='h-full mb-32 pt-8' id='order'>
                 <h1 className='orderNowHeading text-center text-7xl font-semibold mb-2'>Contact Us</h1>
                 <p className='text-center text-md font-mono mb-16'>Please ensure that the information you provided is correct.</p>
                 <Collapse in={!!alertMsg} ref={alertRef}>

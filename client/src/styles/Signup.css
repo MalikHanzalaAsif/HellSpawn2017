@@ -1,0 +1,5 @@
+@media (width <= 350px) {
+    #signup{
+        margin-top: 8rem;
+    }
+}

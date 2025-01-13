@@ -3,7 +3,7 @@ import "../styles/AboutUs.css";
 
 const AboutUs = () => {
    return (
-      <section id='aboutUs' className='pt-32'>
+      <section id='aboutUs' className='pt-8'>
          <h1 className='aboutUsHeading text-8xl text-red-500 text-center mt-2'>About <span className='bg-red-500 text-white'>Us</span></h1>
          <div id='aboutUsContent' className="flex justify-center items-center mb-16">
             <div className='m-4'>

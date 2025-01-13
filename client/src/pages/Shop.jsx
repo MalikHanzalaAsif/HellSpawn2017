@@ -57,7 +57,7 @@ const Shop = () => {
     ];
 
     return (
-        <section id="shop" className="pt-32">
+        <section id="shop" className='pt-8'>
             <h1 className="shopHeading mt-8 mb-16 text-5xl font-semibold text-center">Shop By Categories</h1>
 
             {categories.map(({ id, title, ref, type }) => (

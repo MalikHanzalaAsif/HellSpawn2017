@@ -5,6 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LoginIcon from '@mui/icons-material/Login';
 import "../styles/Navbar.css";
 import { NavLink } from "react-router-dom";
 
@@ -104,6 +105,17 @@ export default function Navbar() {
               }
             >
               <ContactMailIcon className="mr-2" /> Contact Us
+            </NavLink>
+          </li>
+          <li className="m-2 lg:m-0 cursor-pointer">
+            <NavLink
+              to="/login"
+              onClick={handleCloseMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+              }
+            >
+              <LoginIcon className="mr-2" /> Login/Signup
             </NavLink>
           </li>
         </ul>
