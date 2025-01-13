@@ -3,8 +3,14 @@ const app = express();
 const port = 8081;
 import cors from "cors";
 import dotenv from 'dotenv';
+import mongoose from "mongoose";
 dotenv.config();
 import orderRoutes from "./routes/contactRoutes.js"
+
+// DB CONNECTION
+mongoose.connect(process.env.MONGODB_URL)
+.then(() => console.log("connected to database"))
+.catch((err) => console.log("error connecting to database: ", err));
 
 // MIDDLEWARES
 app.use(cors({
@@ -12,7 +18,6 @@ app.use(cors({
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 // ROUTES
 app.use("/contact", orderRoutes);
