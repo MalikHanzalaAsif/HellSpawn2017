@@ -5,6 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useForm } from "react-hook-form";
 import "../styles/Login.css";
 import { Link } from 'react-router-dom';
+import { loginApi } from '../api/userApi';
 
 const Login = () => {
     const {
@@ -14,29 +15,25 @@ const Login = () => {
         formState: { errors, isSubmitting},
     } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data);
-    }
+    const onSubmit = async (data) => {
+        await loginApi(data);
+    };
 
     return (
         <div id='login' className='flex h-full justify-center items-center mt-12 mb-8'>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center items-center w-96 '>
                 <h1 className='text-5xl font-semibold mb-8 mt-8'>Login</h1>
                 <TextField
-                    label="Email Address"
+                    label="Username"
                     variant="outlined"
                     required
-                    type="email"
+                    type="text"
                     style={{ margin: "0.5rem", width: "100%" }}
-                    {...register("email", {
+                    {...register("username", {
                         required: {
                             value: true,
-                            message: "Please enter your email address!"
+                            message: "Please enter your username"
                         },
-                        pattern: {
-                            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                            message: "Please enter a valid email address!"
-                        }
                     })}
                 />
                 {errors.email && <span className='text-red-600 mb-4'>{errors.email.message}</span>}

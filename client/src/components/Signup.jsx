@@ -5,6 +5,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useForm } from "react-hook-form";
 import "../styles/Signup.css";
 import { Link } from 'react-router-dom';
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+import { signupApi } from '../api/userApi';
 
 const Signup = () => {
     const {
@@ -15,27 +17,26 @@ const Signup = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        console.log(data)
-    }
-console.log(isSubmitting)
+        await signupApi(data);
+    };
     return (
         <div id='signup' className='flex h-full justify-center items-center mt-6 mb-8'>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center items-center w-96 '>
                 <h1 className='text-5xl font-semibold mb-8 mt-8'>Signup</h1>
                 <TextField
-                    label="Full Name"
+                    label="Username unique"
                     variant="outlined"
                     required
                     type="text"
                     style={{ margin: "0.5rem", width: "100%" }}
-                    {...register("name", {
+                    {...register("username", {
                         required: {
                             value: true,
-                            message: "name is required!"
+                            message: "username is required!"
                         },
                         minLength: {
                             value: 3,
-                            message: "name must be at least 3 characters long"
+                            message: "username must be at least 3 characters long"
                         }
                     })}
                 />
@@ -52,7 +53,7 @@ console.log(isSubmitting)
                             message: "email address is required!"
                         },
                         pattern: {
-                            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                            value: emailRegex,
                             message: "Please enter a valid email address!"
                         }
                     })}
