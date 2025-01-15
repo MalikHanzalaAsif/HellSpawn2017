@@ -24,15 +24,15 @@ const Login = () => {
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center items-center w-96 '>
                 <h1 className='text-5xl font-semibold mb-8 mt-8'>Login</h1>
                 <TextField
-                    label="Username"
+                    label="email"
                     variant="outlined"
                     required
-                    type="text"
+                    type="email"
                     style={{ margin: "0.5rem", width: "100%" }}
-                    {...register("username", {
+                    {...register("email", {
                         required: {
                             value: true,
-                            message: "Please enter your username"
+                            message: "Please enter your email!"
                         },
                     })}
                 />

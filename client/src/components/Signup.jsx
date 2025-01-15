@@ -24,19 +24,19 @@ const Signup = () => {
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center items-center w-96 '>
                 <h1 className='text-5xl font-semibold mb-8 mt-8'>Signup</h1>
                 <TextField
-                    label="Username unique"
+                    label="Full Name"
                     variant="outlined"
                     required
                     type="text"
                     style={{ margin: "0.5rem", width: "100%" }}
-                    {...register("username", {
+                    {...register("fullName", {
                         required: {
                             value: true,
-                            message: "username is required!"
+                            message: "name is required!"
                         },
                         minLength: {
                             value: 3,
-                            message: "username must be at least 3 characters long"
+                            message: "name must be at least 3 characters long!"
                         }
                     })}
                 />
