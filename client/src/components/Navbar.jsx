@@ -60,7 +60,7 @@ export default function Navbar() {
           id="hamburgerList"
           ref={menuRef}
           className={`lg:flex lg:items-center lg:space-x-6 absolute lg:static lg:bg-transparent w-full left-0 lg:w-auto z-10 transition-transform transform ${
-            isOpen ? "translate-y-10" : "-translate-y-full"
+            isOpen ? "translate-y-10 mt-4" : "-translate-y-full"
           } lg:translate-y-0`}
         >
           <li className="m-2 lg:m-0 cursor-pointer">

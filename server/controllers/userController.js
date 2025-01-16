@@ -2,19 +2,31 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 const generateToken = (user) => {
-  return jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
+  return jwt.sign(
+    {
+      id: user._id,
+      name: user.fullName,
+      email: user.email
+    }, process.env.JWT_SECRET, {
     expiresIn: "7d", // Token valid for 7 days
   });
 };
 
 export const signup = async (req, res) => {
+  console.log(req.cookies.token)
   if (req.cookies.token) {
-    return res.status(200).json({ success: "already logged in!" });
+    return res.json({
+      message: "already logged in!",
+      type: "info"
+    });
   }
   const { fullName, email, password } = req.body;
   const existingUser = await User.findOne({ email });
   if (existingUser)
-    return res.status(400).json({ error: "Email already in use" });
+    return res.json({
+      message: "Email already in use",
+      type: "error"
+    });
   try {
     const newUser = new User({ fullName, email, password });
     await newUser.save();
@@ -22,22 +34,26 @@ export const signup = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     // Send user info to frontend
-    res.status(200).json({
-      message: "Login successful",
+    res.json({
+      message: "Signup successful",
+      type: "success",
       user: {
         id: newUser._id,
-        username: newUser.username,
+        name: newUser.fullName,
         email: newUser.email,
       },
     });
     console.log("Logged in successfully!");
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.json({
+      message: err.message,
+      type: "error"
+    });
     console.log(err.message);
   }
 };
@@ -45,17 +61,24 @@ export const signup = async (req, res) => {
 // Login Route
 export const login = async (req, res) => {
   if (req.cookies.token) {
-    return res.status(200).json({ success: "already logged in!" });
+    return res.json({
+      message: "already logged in!",
+      type: "info"
+    });
   }
   const { email, password } = req.body;
   try {
-    // Find user in the database
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).send("User not found");
+    if (!user) return res.json({
+      message: "User not found",
+      type: "error"
+    });
 
-    // Check if password is correct
     const isMatch = await user.comparePassword(password);
-    if (!isMatch) return res.status(400).send("Invalid credentials");
+    if (!isMatch) return res.json({
+      message: "Invalid credentials",
+      type: "error"
+    });
 
     // Generate JWT Token
     const token = generateToken(user);
@@ -64,29 +87,46 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    // Send user info to frontend
-    res.status(200).json({
+    res.json({
       message: "Login successful",
+      type: "success",
       user: {
         id: user._id,
-        username: user.username,
+        name: user.fullName,
         email: user.email,
       },
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.json({
+      message: err.message,
+      type: "error"
+    });
   }
 };
 
 export const logout = (req, res) => {
+  if (!req.cookies.token) {
+    return res.json({
+      message: "already logged out!",
+      type: "info"
+    });
+  }
   res.clearCookie("token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
   });
-  res.status(200).json({ success: "Logged out!" });
+  res.json({
+    message: "Logged out!",
+    type: "success"
+  });
+};
+
+
+export const getUser = (req, res) => {
+  res.json(req.user);
 };

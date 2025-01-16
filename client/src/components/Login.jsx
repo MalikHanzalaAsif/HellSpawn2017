@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import "../styles/Login.css";
 import { Link } from 'react-router-dom';
 import { loginApi } from '../api/userApi';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -17,6 +19,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         await loginApi(data);
+        navigate("/")
     };
 
     return (
