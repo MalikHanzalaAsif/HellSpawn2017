@@ -6,13 +6,17 @@ export const signupApi = async (data) => {
         const response = await axios.post('http://localhost:8081/signup', data, {
             withCredentials: true,
         });
-        console.log(response)
         toastEmitter({
             title: response.data?.message,
             type: response.data?.type,
         });
+        return response.data;
     } catch (error) {
         console.log(error)
+        toastEmitter({
+            title: error?.message,
+            type: "error",
+        });
     };
 };
 
@@ -32,8 +36,13 @@ export const loginApi = async (data) => {
                 type: response.data?.type,
             });
         }
+        return response.data;
     } catch (error) { 
         console.log(error)
+        toastEmitter({
+            title: error?.message,
+            type: "error",
+        });
     };
 };
 
@@ -48,6 +57,10 @@ export const logoutApi = async () => {
         }); 
     } catch (err) {
         console.log(err)
+        toastEmitter({
+            title: err?.message,
+            type: "error",
+        });
     };
 };
 

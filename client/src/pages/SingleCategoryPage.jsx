@@ -1,20 +1,25 @@
-import { shopItems } from "../utils/items";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import getCategoryItems from '../utils/getCategoryItems';
+import { shopItems } from '../utils/items';
 import Rating from '@mui/material/Rating';
 import AddToCartBtn from "../components/AddToCartBtn";
 import SplitButton from "../components/ui/NavigationCategoriesButton";
 import BackToTopButton from "../components/ui/BackToTopButton";
 
-const Shop = () => {
+const SingleCategoryPage = () => {
+    const location = useLocation();
+    const items = getCategoryItems(location, shopItems)
     return (
         <>
             <SplitButton />
             <section id="shop" className="pt-10">
-                <h1 className="text-center text-5xl font-semibold mb-8">Shop By Categories</h1>
+                <h1 className="text-center text-5xl font-semibold mb-8">{items[0].category}</h1>
                 <div
                     id="products"
                     className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
                 >
-                    {shopItems.map((item) => (
+                    {items.map((item) => (
                         <div
                             className="item flex flex-col justify-center items-center p-4 max-w-60"
                             key={item.id}
@@ -41,6 +46,6 @@ const Shop = () => {
             <BackToTopButton />
         </>
     );
-};
+}
 
-export default Shop;
+export default SingleCategoryPage;

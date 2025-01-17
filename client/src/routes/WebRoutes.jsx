@@ -8,6 +8,7 @@ import Shop from '../pages/Shop';
 import Contact from '../pages/Contact';
 import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
+import SingleCategoryPage from '../pages/SingleCategoryPage';
 
 import NotFound from '../components/NotFound';
 
@@ -24,6 +25,9 @@ const WebRoutes = () => {
                     <Route path="/contact" element={<Contact />} />
                     <Route path='/login' element={<LoginPage />} />
                     <Route path="/signup" element={<SignupPage />} />
+                    <Route path="/shop/tshirts" element={<SingleCategoryPage />} />
+                    <Route path="/shop/trousers" element={<SingleCategoryPage />} />
+                    <Route path="/shop/hoodies" element={<SingleCategoryPage />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>

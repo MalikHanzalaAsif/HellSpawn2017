@@ -5,6 +5,7 @@ import Items from './Items';
 import Sale from './Sale';
 import Reviews from './Reviews';
 import Guidance from './Guidance';
+import BackToTopButton from './ui/BackToTopButton';
 
 const Content = () => {
   return (
@@ -15,6 +16,7 @@ const Content = () => {
     <Sale />
     <Reviews />
     <Guidance />
+    <BackToTopButton />
     </>
   )
 }

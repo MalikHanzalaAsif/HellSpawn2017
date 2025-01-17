@@ -7,8 +7,12 @@ import "../styles/Signup.css";
 import { Link } from 'react-router-dom';
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 import { signupApi } from '../api/userApi';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/userContext';
 
 const Signup = () => {
+    const {user, setUser} = useUser();
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -17,7 +21,11 @@ const Signup = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        await signupApi(data);
+        let res = await signupApi(data);
+        setUser(res.user || null);
+        if(res.user){
+            navigate("/")
+        };
     };
     return (
         <div id='signup' className='flex h-full justify-center items-center mt-6 mb-8'>

@@ -13,7 +13,6 @@ const generateToken = (user) => {
 };
 
 export const signup = async (req, res) => {
-  console.log(req.cookies.token)
   if (req.cookies.token) {
     return res.json({
       message: "already logged in!",
@@ -48,7 +47,7 @@ export const signup = async (req, res) => {
         email: newUser.email,
       },
     });
-    console.log("Logged in successfully!");
+    console.log("signup successfull!");
   } catch (err) {
     res.json({
       message: err.message,

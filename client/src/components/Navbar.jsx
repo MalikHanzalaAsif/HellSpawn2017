@@ -2,14 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ContactMailIcon from "@mui/icons-material/ContactMail";
+import CallIcon from '@mui/icons-material/Call';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LoginIcon from '@mui/icons-material/Login';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import "../styles/Navbar.css";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../context/userContext";
 
 export default function Navbar() {
+  const {user} = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -104,19 +107,25 @@ export default function Navbar() {
                 `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
               }
             >
-              <ContactMailIcon className="mr-2" /> Contact Us
+              <CallIcon className="mr-2" /> Contact Us
             </NavLink>
           </li>
           <li className="m-2 lg:m-0 cursor-pointer">
-            <NavLink
-              to="/login"
-              onClick={handleCloseMenu}
-              className={({ isActive }) =>
-                `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
-              }
-            >
-              <LoginIcon className="mr-2" /> Login/Signup
-            </NavLink>
+            {!user ? (
+              <NavLink
+                to="/login"
+                onClick={handleCloseMenu}
+                className={({ isActive }) =>
+                  `${isActive ? "active-link" : ""} flex items-center text-gray-800 transition-colors`
+                }
+              >
+                <LoginIcon className="mr-2" /> Login/Signup
+              </NavLink>
+            ) : (
+              <div className="font-semibold">
+                <AccountCircleIcon /> {user.name}
+              </div>
+            )}
           </li>
         </ul>
       </div>

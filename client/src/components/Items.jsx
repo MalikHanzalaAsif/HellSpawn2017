@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/Items.css";
-import items from '../utils/items';
+import { displayItems } from '../utils/items';
 import Rating from '@mui/material/Rating';
 import AddToCartBtn from "./AddToCartBtn";
 import { Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ const Items = () => {
                 />
                 {/* Product Cards */}
                 {
-                    items.map((item, idx) => (
+                    displayItems.map((item, idx) => (
                         <div className="item flex flex-col justify-center items-center mx-8 p-4" key={idx}>
                             <div className="itemImage bg-gray-100 rounded-3xl">
                                 <img src={item.image} alt="tshirt image" className='w-48 h-52' />

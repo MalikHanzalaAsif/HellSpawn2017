@@ -7,8 +7,10 @@ import "../styles/Login.css";
 import { Link } from 'react-router-dom';
 import { loginApi } from '../api/userApi';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/userContext';
 
 const Login = () => {
+    const {user, setUser} = useUser();
     const navigate = useNavigate();
     const {
         register,
@@ -18,8 +20,11 @@ const Login = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        await loginApi(data);
-        navigate("/")
+        let res = await loginApi(data);
+        setUser(res.user || null);
+        if(res.user){
+            navigate("/")
+        };
     };
 
     return (

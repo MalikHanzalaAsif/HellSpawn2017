@@ -5,21 +5,21 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
 import ProfileMenu from './ui/ProfileMenu';
-import { UserProvider } from '../context/userContext';
+import { useUser } from '../context/userContext';
+
 const Layout = () => {
+  const {user} = useUser();
   return (
-    <UserProvider>
       <div id="app" style={{ height: "100%", display: 'flex', flexDirection: "column" }}>
         <ToastContainer />
         <UpperNav />
         <Navbar />
         <main style={{ flex: "1" }} className='min-h-[100vh] pt-20'>
-          <ProfileMenu />
+          {user && <ProfileMenu />}
           <Outlet />
         </main>
         <Footer />
       </div>
-    </UserProvider>
   )
 }
 
