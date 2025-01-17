@@ -33,7 +33,7 @@ const Shop = () => {
                                 }}
                                 className="mt-2"
                             />
-                            <AddToCartBtn price={item.price} />
+                            <AddToCartBtn price={item.price} title={item.title} image={item.image}/>
                         </div>
                     ))}
                 </div>

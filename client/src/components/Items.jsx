@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/Items.css";
 import { displayItems } from '../utils/items';
 import Rating from '@mui/material/Rating';
@@ -6,6 +6,7 @@ import AddToCartBtn from "./AddToCartBtn";
 import { Link } from 'react-router-dom';
 
 const Items = () => {
+
     return (
         <>
             <h1 className='text-center text-3xl mt-12 mb-12 font-semibold' id="itemsHeading">FEATURED PRODUCTS</h1>
@@ -40,19 +41,19 @@ const Items = () => {
                                 }}
                                 className='mt-2'
                             />
-                            <AddToCartBtn price={item.price} />
+                            <AddToCartBtn price={item.price} title={item.title} image={item.image}/>
                         </div>
                     ))
                 }
             </section>
-                <div className="flex justify-center items-center">
-                    <button className="show-more mt-8">
-                        <span className="circle" aria-hidden="true">
-                            <span className="icon arrow"></span>
-                        </span>
-                        <Link className="button-text" to="/shop">Show More</Link>
-                    </button>
-                </div>
+            <div className="flex justify-center items-center">
+                <button className="show-more mt-8">
+                    <span className="circle" aria-hidden="true">
+                        <span className="icon arrow"></span>
+                    </span>
+                    <Link className="button-text" to="/shop">Show More</Link>
+                </button>
+            </div>
         </>
     )
 }
