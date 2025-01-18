@@ -38,7 +38,7 @@ const SingleCategoryPage = () => {
                                 }}
                                 className="mt-2"
                             />
-                            <AddToCartBtn price={item.price} title={item.title} image={item.image}/>
+                            <AddToCartBtn item={item}/>
                         </div>
                     ))}
                 </div>

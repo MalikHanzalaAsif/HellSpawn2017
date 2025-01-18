@@ -2,7 +2,10 @@ import jwt from "jsonwebtoken";
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.token;
-  if (!token) return res.status(401).send('Access Denied');
+  if (!token) return res.json({
+    title: "you aren't logged in!",
+    type: "error",
+  });
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     const user = {
@@ -13,7 +16,10 @@ const verifyToken = (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    res.status(400).send('Invalid Token');
+    res.json({
+      title: "Something went wrong! try again.",
+      type: "error"
+    });
   }
 };
 

@@ -3,7 +3,7 @@ import toastEmitter from "../components/ui/toast";
 
 export const signupApi = async (data) => {
     try{
-        const response = await axios.post('http://localhost:8081/signup', data, {
+        const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/signup`, data, {
             withCredentials: true,
         });
         toastEmitter({
@@ -22,7 +22,7 @@ export const signupApi = async (data) => {
 
 export const loginApi = async (data) => { 
     try{
-        const response = await axios.post('http://localhost:8081/login', data, {
+        const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`, data, {
             withCredentials: true,
         });
         if(response.data.type == "success"){
@@ -48,7 +48,7 @@ export const loginApi = async (data) => {
 
 export const logoutApi = async () => {
     try{
-        const response = await axios.post('http://localhost:8081/logout', {}, {
+        const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/logout`, {}, {
             withCredentials: true,
         });
         toastEmitter({
@@ -66,7 +66,7 @@ export const logoutApi = async () => {
 
 export const getUserApi = async () => { 
     try { 
-        const response = await axios.get("http://localhost:8081/user", {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user`, {
             withCredentials: true,
         });
         return response.data;

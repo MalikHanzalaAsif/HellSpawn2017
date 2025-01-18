@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/AddToCartBtn.css";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -6,6 +6,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useUser } from '../context/userContext';
+import { useNavigate } from 'react-router-dom';
+import toastEmitter from './ui/toast';
+import { addToCartApi } from '../api/cartApi';
 
 const style = {
     position: 'absolute',
@@ -20,10 +24,35 @@ const style = {
     borderRadius: "50px"
 };
 
-const AddToCartBtn = ({ price, title, image }) => {
+const AddToCartBtn = ({ item }) => {
+    const [isAddingItem, setIsAddingItem] = useState(false)
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
+    const { user } = useUser();
+
+    async function addToCartFunc(item) {
+        if (!user) {
+            toastEmitter({
+                title: "you need to be logged in!",
+                type: "warn",
+            });
+            navigate("/login");
+        } else {
+            try {
+                setIsAddingItem(true);
+                await addToCartApi(item);
+                handleClose();
+
+            } catch (err) {
+                console.log(err);
+
+            } finally {
+                setIsAddingItem(false);
+            }
+        };
+    };
     return (
         <>
             <button onClick={handleOpen}>
@@ -59,7 +88,7 @@ const AddToCartBtn = ({ price, title, image }) => {
                             fill="#ffffff"
                         ></path>
                     </svg>
-                    <span>${price}</span>
+                    <span>${item.price}</span>
                 </div>
             </button>
 
@@ -72,19 +101,19 @@ const AddToCartBtn = ({ price, title, image }) => {
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style} className="flex flex-col justify-center items-center">
-                        <img src={image} alt={title} className='h-52 w-52' />
+                        <img src={item.image} alt={item.title} className='h-52 w-52' />
                         <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {title}
+                            {item.title}
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2 }} className='font-semibold'>
-                            ${price}
+                            ${item.price}
                         </Typography>
                         <div>
                             <Button variant="contained" color="error" startIcon={<CloseIcon />} style={{ marginRight: "2rem" }} onClick={handleClose}>
                                 close
                             </Button>
-                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />}>
-                                Add to cart
+                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />} onClick={() => addToCartFunc(item)} disabled={isAddingItem}>
+                                {isAddingItem ? "Adding" : "Add to cart"}
                             </Button>
                         </div>
                     </Box>

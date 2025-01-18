@@ -6,10 +6,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 dotenv.config();
 const dbUrl = process.env.MONGODB_URL;
-import orderRoutes from "./routes/contactRoutes.js";
-import User from "./models/User.js";
-import expressError from "./utils/expressError.js";
+import contactRoutes from "./routes/contactRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js"
 import cookieParser from "cookie-parser";
 
 // DB CONNECTION
@@ -32,8 +31,9 @@ app.use(cookieParser());
 
 
 // ROUTES
-app.use("/contact", orderRoutes);
+app.use("/contact", contactRoutes);
 app.use(userRoutes);
+app.use(cartRoutes);
 
 
 

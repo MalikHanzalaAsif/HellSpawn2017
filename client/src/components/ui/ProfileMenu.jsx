@@ -15,7 +15,7 @@ export default function ProfileMenu() {
       {(popupState) => (
         <React.Fragment>
           <Button variant="contained" {...bindTrigger(popupState)} className='z-50' style={{ zIndex: 1000, position: "fixed", right: "0.5rem", top: "7rem", backgroundColor: "#DE2104" }}>
-          <SettingsIcon className='mr-1'/> Profile
+          <SettingsIcon className='mr-1'/> Dashboard
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={popupState.close}>Orders</MenuItem>

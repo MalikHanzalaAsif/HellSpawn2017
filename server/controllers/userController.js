@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import userValidate from "../validation/userValidate.js";
 
 const generateToken = (user) => {
   return jwt.sign(
@@ -27,13 +28,13 @@ export const signup = async (req, res) => {
       type: "error"
     });
   try {
-    const newUser = new User({ fullName, email, password });
+    const validatedUser = await userValidate.validateAsync({fullName, email, password});
+    const newUser = new User(validatedUser);
     await newUser.save();
     const token = generateToken(newUser);
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -86,7 +87,6 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -117,7 +117,6 @@ export const logout = (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
   });
   res.json({
     message: "Logged out!",
