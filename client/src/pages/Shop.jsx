@@ -20,7 +20,7 @@ const Shop = () => {
                             key={item.id}
                         >
                             <div className="itemImage bg-gray-100 rounded-3xl">
-                                <img src={item.image} alt="tshirt image" className="w-48 h-52" />
+                                <img src={item.image} alt={item.title} className="w-48 h-52" />
                             </div>
                             <p className="mt-2">{item.title}</p>
                             <Rating
