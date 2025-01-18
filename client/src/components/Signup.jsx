@@ -48,7 +48,7 @@ const Signup = () => {
                         }
                     })}
                 />
-                {errors.name && <span className='text-red-600 mb-4'>{errors.name.message}</span>}
+                {errors.fullName && <span className='text-red-600 mb-4'>{errors.fullName.message}</span>}
                 <TextField
                     label="Email Address"
                     variant="outlined"

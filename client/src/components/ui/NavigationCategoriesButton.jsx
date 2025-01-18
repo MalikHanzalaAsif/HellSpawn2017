@@ -79,7 +79,7 @@ export default function SplitButton() {
           {/* Main Button */}
           <Button
             onClick={handleClick}
-            style={{ background: "linear-gradient(to right, #DE2104, #fd4b30)" }}
+            style={{ background: "linear-gradient(to right, #DE2104, #fd4b30)", border: "none" }}
             className="border-1 border-white"
           >
             {options[selectedIndex].name}
@@ -93,7 +93,7 @@ export default function SplitButton() {
             aria-label="select merge strategy"
             aria-haspopup="menu"
             onClick={handleToggle}
-            style={{ background: "linear-gradient(to right, #DE2104, #fd4b30)" }}
+            style={{ background: "linear-gradient(to right, #DE2104, #fd4b30)", border: "none" }}
           >
             <ArrowDropDownIcon />
           </Button>
