@@ -16,10 +16,10 @@ export const sendEmail = async (req, res, next) => {
         });
 
         // Email options
-        const mailOptions = {
+        const ownerMailOptions = {
             from: process.env.FROM_EMAIL,
             to: process.env.TO_EMAIL,
-            subject: "New Order on HellSpawn2017",
+            subject: "Contact Form Submission on HellSpawn2017",
             text: `
                    NAME: ${name}
                    EMAIL: ${email}
@@ -27,12 +27,20 @@ export const sendEmail = async (req, res, next) => {
                    CONTACT: ${number}
                    `
         };
+        const userMailOptions = {
+            from: process.env.FROM_EMAIL,
+            to: email,
+            subject: "Contact Form Submitted on HellSpawn2017",
+            text: `Dear ${name}! We've got your query . We'll get back to you soon. Thanks for reaching out!`
+        };
 
         // Send email asynchronously
-        const info = await transporter.sendMail(mailOptions);
+        const ownerInfo = await transporter.sendMail(ownerMailOptions);
+        const userInfo = await transporter.sendMail(userMailOptions);
 
-        console.log("Email sent successfully:", info.response);
-        res.json({ success: "Order placed successfully :)" });
+        console.log("Email sent successfully to owner:", ownerInfo.response);
+        console.log("Email sent successfully to user:", userInfo.response);
+        res.json({ success: "Form Submitted Successfully!" });
     } catch (err) {
         console.error("Error sending email:", err);
         next(err); // Pass the error to the error-handling middleware
