@@ -109,10 +109,10 @@ const AddToCartBtn = ({ item }) => {
                             ${item.price}
                         </Typography>
                         <div>
-                            <Button variant="contained" color="error" startIcon={<CloseIcon />} style={{ marginRight: "2rem" }} onClick={handleClose}>
+                            <Button variant="contained" color="error" startIcon={<CloseIcon />} style={{ marginRight: "2rem", marginBottom: "0.5rem" }} onClick={handleClose}>
                                 close
                             </Button>
-                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />} onClick={() => addToCartFunc(item)} disabled={isAddingItem}>
+                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />} onClick={() => addToCartFunc(item)} disabled={isAddingItem} style={{marginBottom: "0.5rem"}}>
                                 {isAddingItem ? "Adding" : "Add to cart"}
                             </Button>
                         </div>

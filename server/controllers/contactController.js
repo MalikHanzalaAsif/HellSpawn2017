@@ -36,13 +36,14 @@ export const sendEmail = async (req, res, next) => {
 
         // Send email asynchronously
         const ownerInfo = await transporter.sendMail(ownerMailOptions);
-        const userInfo = await transporter.sendMail(userMailOptions);
-
         console.log("Email sent successfully to owner:", ownerInfo.response);
-        console.log("Email sent successfully to user:", userInfo.response);
         res.json({ success: "Form Submitted Successfully!" });
+        
+        // send email to user
+        const userInfo = await transporter.sendMail(userMailOptions);
+        console.log("Email sent successfully to user:", userInfo.response);
     } catch (err) {
         console.error("Error sending email:", err);
         next(err); // Pass the error to the error-handling middleware
     }
-}
+};

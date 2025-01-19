@@ -125,7 +125,7 @@ const Contact = () => {
                             name="message"
                             value={formData.message} style={{margin: "0.5rem"}}
                         />
-                        <Button variant="contained" size="large" type="submit" style={{margin: "0.5rem"}}>
+                        <Button variant="contained" size="large" type="submit" style={{margin: "0.5rem"}} disabled={isLoading}>
                             {isLoading ? 'Submitting...' : 'Submit'}
                         </Button>
                     </form>

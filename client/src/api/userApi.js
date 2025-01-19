@@ -71,6 +71,6 @@ export const getUserApi = async () => {
         });
         return response.data;
      } catch (err) {
-        console.log(err)
+        return;
      };
 };

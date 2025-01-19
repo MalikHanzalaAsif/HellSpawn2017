@@ -1,25 +1,23 @@
 import jwt from "jsonwebtoken";
 
 const verifyToken = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) return res.json({
-    title: "you aren't logged in!",
-    type: "error",
-  });
   try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    const user = {
+    const token = req.cookies?.token; // Check for token
+    if (!token) return res.status(401).send('Authentication token not provided.');
+
+    const verified = jwt.verify(token, process.env.JWT_SECRET); // Verify token
+    req.user = {
       id: verified.id,
       name: verified.name,
       email: verified.email,
-    }
-    req.user = user;
-    next();
+    };
+
+    next(); // Proceed to the next middleware
   } catch (err) {
-    res.json({
-      title: "Something went wrong! try again.",
-      type: "error"
-    });
+    if (err.name === 'TokenExpiredError') {
+      return res.status(401).send('Token expired, please log in again.');
+    }
+    res.status(400).send('Invalid token.');
   }
 };
 
