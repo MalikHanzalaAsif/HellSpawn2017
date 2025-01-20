@@ -9,6 +9,7 @@ import Contact from '../pages/Contact';
 import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
 import SingleCategoryPage from '../pages/SingleCategoryPage';
+import CartPage from '../pages/CartPage';
 
 import NotFound from '../components/NotFound';
 
@@ -28,6 +29,7 @@ const WebRoutes = () => {
                     <Route path="/shop/tshirts" element={<SingleCategoryPage />} />
                     <Route path="/shop/trousers" element={<SingleCategoryPage />} />
                     <Route path="/shop/hoodies" element={<SingleCategoryPage />} />
+                    <Route path="/cart" element={<CartPage />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>

@@ -35,3 +35,8 @@ export const addToCart = async (req, res) => {
         });
     }
 };
+
+export const getCart = async (req, res) => { 
+    console.log(req.user);
+    res.send(`user recieved on backend! ${req.user}`);
+}

@@ -19,3 +19,14 @@ export const addToCartApi = async (item) => {
         });
     };
 };
+
+export const getCartApi = async () => {
+    try {
+        let response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/cart`, {
+            withCredentials: true
+        });
+        console.log(response.data);
+    } catch (err) {
+        console.log(err)
+    };
+};

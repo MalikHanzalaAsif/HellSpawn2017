@@ -11,7 +11,11 @@ function App() {
     const fetchUser = async () => {
       try {
         let userData = await getUserApi();
-        setUser(userData || null);
+        if (typeof(userData) === "string") {
+          setUser(null);
+        } else {
+          setUser(userData);
+        }
       } catch (error) {
         console.error("Failed to fetch user:", error);
       }

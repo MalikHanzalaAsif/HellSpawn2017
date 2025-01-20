@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import userValidate from "../validation/userValidate.js";
 
+// GENERATE TOKEN
 const generateToken = (user) => {
   return jwt.sign(
     {
@@ -13,6 +14,7 @@ const generateToken = (user) => {
   });
 };
 
+// SIGNUP FUNCTION
 export const signup = async (req, res) => {
   if (req.cookies.token) {
     return res.json({
@@ -59,7 +61,7 @@ export const signup = async (req, res) => {
   }
 };
 
-// Login Route
+// LOGIN FUNCTION
 export const login = async (req, res) => {
   if (req.cookies.token) {
     return res.json({
@@ -109,6 +111,7 @@ export const login = async (req, res) => {
   }
 };
 
+// LOGOUT FUNCTION
 export const logout = (req, res) => {
   if (!req.cookies.token) {
     return res.json({
