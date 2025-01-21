@@ -36,7 +36,118 @@ export const addToCart = async (req, res) => {
     }
 };
 
-export const getCart = async (req, res) => { 
-    console.log(req.user);
-    res.send(`user recieved on backend! ${req.user}`);
-}
+export const getCart = async (req, res) => {
+    try {
+        const { id } = req.user;
+        let cart = await Cart.findOne({ userId: id });
+        if (!cart) {
+            cart = new Cart({ userId: id, items: [] });
+            await cart.save();
+        }
+        res.json(cart.items);
+        console.log("sent cart")
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({
+            message: "An error occurred while fetching cart items.",
+            type: "error"
+        });
+    }
+};
+
+export const removeFromCart = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const itemId = req.params.id;
+        let cart = await Cart.findOne({ userId: id });
+        if (!cart) {
+            return res.status(404).json({
+                message: "Cart not found",
+                type: "error"
+            });
+        }
+        const itemIndex = cart.items.findIndex(item => item.id === itemId);
+        if (itemIndex === -1) {
+            return res.status(404).json({
+                message: "Item not found in cart",
+                type: "error"
+            });
+        }
+        cart.items.splice(itemIndex, 1);
+        await cart.save();
+        res.json({
+            message: "Item removed from cart",
+            type: "success"
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: "An error occurred while removing cart item.",
+            type: "error"
+        });
+    }
+};
+
+export const addQuantity = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const itemId = req.params.id;
+        let cart = await Cart.findOne({ userId: id });
+        if (!cart) {
+            return res.status(404).send("cart not found!");
+        }
+        const itemIndex = cart.items.findIndex(item => item.id === itemId);
+        if (itemIndex === -1) {
+            return res.status(404).send("item not found!");
+        }
+        cart.items[itemIndex].quantity += 1;
+        await cart.save();
+        res.send("quantity increased");
+    } catch (err) {
+        console.log(err);
+        return res.send("An error occurred while increasing quantity!.");
+    }
+};
+
+export const substractQuantity = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const itemId = req.params.id;
+        let cart = await Cart.findOne({ userId: id });
+        if (!cart) {
+            return res.status(404).send("cart not found!");
+        }
+        const itemIndex = cart.items.findIndex(item => item.id === itemId);
+        if (itemIndex === -1) {
+            return res.status(404).send("item not found!");
+        }
+        cart.items[itemIndex].quantity -= 1;
+        await cart.save();
+        res.send("quantity decreased!");
+    } catch (err) {
+        console.log(err);
+        return res.send("An error occurred while decreasing quantity!.");
+    }
+};
+
+export const changeSize = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const itemId = req.params.id;
+        const newSize = req.body.size;
+        let cart = await Cart.findOne({ userId: id });
+        if (!cart) {
+            return res.status(404).send("cart not found!");
+        }
+        const itemIndex = cart.items.findIndex(item => item.id === itemId);
+        if (itemIndex === -1) {
+            return res.status(404).send("item not found!");
+        }
+        cart.items[itemIndex].size = newSize;
+        await cart.save();
+        res.send("size changed!");
+    } catch (err) {
+        console.log(err);
+        return res.send("An error occurred while changing size!.");
+    };
+};
