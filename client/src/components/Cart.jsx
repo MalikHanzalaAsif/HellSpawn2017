@@ -83,13 +83,19 @@ const Cart = ({ isLoading }) => {
 
                                                 <div class="flex gap-4 mt-4 justify-center items-center">
                                                     <div class="relative group">
-                                                        <select name="size" id="size" className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md mt-4" onChange={(event) => changeSize(item.id, event.target.value)}>
-                                                            <option value={item.size} selected>{item.size}</option>
+                                                        <select
+                                                            name="size"
+                                                            id="size"
+                                                            className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md mt-4"
+                                                            value={item.size}
+                                                            onChange={(event) => changeSize(item.id, event.target.value)}
+                                                        >
                                                             <option value="SM">SM</option>
                                                             <option value="MD">MD</option>
                                                             <option value="XL">XL</option>
                                                             <option value="XXL">XXL</option>
                                                         </select>
+
                                                     </div>
 
                                                     <div>
@@ -125,7 +131,9 @@ const Cart = ({ isLoading }) => {
                             </ul>
 
                             <div className="mt-8 space-y-2">
-                                <button type="button" className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md">Checkout</button>
+                                <Link to="/checkout">
+                                    <button type="button" className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md">Checkout</button>
+                                </Link>
                                 <Link to="/shop">
                                     <button type="button" className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md">Continue Shopping</button>
                                 </Link>
