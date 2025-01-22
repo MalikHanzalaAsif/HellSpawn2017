@@ -6,11 +6,13 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { logoutApi } from '../../api/userApi';
 import { getUserApi } from '../../api/userApi';
 import { useUser } from "../../context/userContext";
+import { useCart } from "../../context/cartContext";
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from 'react-router-dom';
 
 export default function ProfileMenu() {
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
+  const { setCart } = useCart();
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
@@ -26,7 +28,8 @@ export default function ProfileMenu() {
             <MenuItem onClick={async () => {
               popupState.close();
               await logoutApi();
-              setUser(null)
+              setUser(null);
+              setCart([]);
             }}>Logout</MenuItem>
           </Menu>
         </React.Fragment>

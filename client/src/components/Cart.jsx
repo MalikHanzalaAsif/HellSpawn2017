@@ -55,8 +55,8 @@ const Cart = ({ isLoading }) => {
     return (
         <div>
             {isLoading ? (
-                <div className='flex flex-col justify-center items-center'>
-                    <CircularProgress color="secondary" size="8rem" />
+                <div className='h-[100vh] w-full flex flex-col justify-center items-center '>
+                    <CircularProgress color="primary" size="4rem" />
                     <p>Loading cart!</p>
                 </div>
             ) : cart.length === 0 ? (

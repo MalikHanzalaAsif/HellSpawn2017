@@ -6,17 +6,16 @@
     height: 100vh;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'MyCustomFont';
     src: url('../assets/fonts/COUBRAFONT.woof2') format('woff2'),
          url('../assets/fonts/COUBRAFONT.woff') format('woff');
     font-weight: normal;
     font-style: normal; 
-  }
+  } */
 
 .homeText{
-  font-family: 'MyCustomFont', sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Lobster", sans-serif;
   font-weight: 500;
   font-style: normal;
     color: black; /* Text color */
