@@ -92,7 +92,7 @@ const AddToCartBtn = ({ item }) => {
                 </div>
             </button>
 
-            {/* MODAL */}
+            {/* ADD TO CART MODAL */}
             <div>
                 <Modal
                     open={open}
