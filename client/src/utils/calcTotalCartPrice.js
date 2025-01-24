@@ -1,3 +1,4 @@
-export default function TotalPrice(cart, discount, shipping, tax) {
-    return Number(cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)) + discount + shipping + tax;
+export default function TotalPrice(cart, discount = 0, shipping = 0, tax = 0) {
+    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return Number((subtotal - discount + shipping + tax).toFixed(2));
 };

@@ -12,8 +12,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import TotalPrice from '../utils/calcTotalCartPrice';
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 const style = {
     position: 'absolute',
@@ -62,8 +61,21 @@ const CheckoutForm = () => {
         console.log(data);
     };
     const formState = watch();
-    console.log(cart)
-    const totalPrice = TotalPrice(cart, 0, 2, 4);
+
+    const calculatedItemTotal = cart
+        .reduce((sum, item) => sum + item.price * item.quantity, 0)
+        .toFixed(2);
+    const totalDiscount = "0.00";
+    const totalShipping = "2.00";
+    const taxAmount = "4.00";
+
+    // Final total calculation
+    const calculatedTotal = (
+        parseFloat(calculatedItemTotal) +
+        parseFloat(totalShipping) -
+        parseFloat(totalDiscount) +
+        parseFloat(taxAmount)
+    ).toFixed(2); // Ensure 2 decimal place
     return (
         <>
             <div class="font-[sans-serif] bg-white mt-8">
@@ -250,82 +262,105 @@ const CheckoutForm = () => {
                         overflowY: "auto",
                         maxHeight: "90vh",
                     }}>
-                        <Typography id="modal-modal-title" variant="h4" component="h2">
+                        <h1 id="modal-modal-title" variant="h4" component="h2" className='text-center text-4xl mb-4'>
                             Order Details
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>Name:</b> {formState.firstName} {formState.lastName}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>Email:</b> {formState.email}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>Phone No:</b> {formState.phone}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>Address:</b> {formState.address}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>City:</b> {formState.city}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }} className='font-semibold'>
-                            <b>State:</b> {formState.state}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2 }} className='font-semibold'>
-                            <b>Zip Code</b>: {formState.zipCode}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2 }} className='font-semibold'>
-                            <b>Total</b>: {totalPrice}
-                        </Typography>
+                        </h1>
+                        <p className='text-center text-sm'>Please ensure that all details are correct before proceeding with payment.</p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>NAME:</b> &nbsp; {formState.firstName} {formState.lastName}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>EMAIL:</b> &nbsp; {formState.email}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>PHONE NO:</b> &nbsp; {formState.phone}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>ADDRESS:</b> &nbsp; {formState.address}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>CITY:</b> &nbsp; {formState.city}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>STATE:</b> &nbsp; {formState.state}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2'>
+                            <b className='font-semibold'>ZIP CODE:</b> &nbsp; {formState.zipCode}
+                        </p>
+                        <p id="modal-modal-description" className='mt-2 mb-4'>
+                            <b className='font-semibold'>TOTAL AMOUNT:</b> &nbsp; ${calculatedTotal} (including additional charges)
+                        </p>
                         <div>
-                            <Button variant="contained" color="error" style={{ marginRight: "2rem", marginBottom: "0.5rem" }} onClick={handleClose}>
+                            <Button variant="contained" color="primary" style={{ marginRight: "2rem", marginBottom: "0.5rem", borderRadius: "50px" }} onClick={handleClose}>
                                 change Details
                             </Button>
-                            <PayPalScriptProvider
-                                options={{
-                                    "client-id": import.meta.env.VITE_PAYPAL_CLIENT_ID,
-                                    currency: "USD",
-                                }}
-                            >
+
                                 <div className="mt-6">
                                     <PayPalButtons
+                                        style={{
+                                            color: "silver", // Options: 'gold', 'blue', 'silver', 'white', 'black'
+                                            shape: "pill", // Options: 'rect', 'pill'
+                                            label: "checkout",  // Options: 'pay', 'checkout', 'buynow', 'paypal', 'installment'
+                                            layout: "vertical", // Options: 'horizontal', 'vertical'
+                                            tagline: false, // Options: true, false (to show/hide tagline)
+                                            height: 45, // Set button height (optional)
+                                        }}
                                         createOrder={(data, actions) => {
-                                            return actions.order.create({
-                                                purchase_units: [
-                                                    {
-                                                        amount: {
-                                                            value: totalPrice,
-                                                        },
-                                                        items: cart.map(item => ({
-                                                            name: item.title,
-                                                            quantity: item.quantity.toString(),
-                                                            unit_amount: {
-                                                                value: item.price.toString(),
+                                            const purchase_units = [
+                                                {
+                                                    amount: {
+                                                        value: calculatedTotal, // Must equal the sum of all breakdown values
+                                                        currency_code: "USD",
+                                                        breakdown: {
+                                                            item_total: {
+                                                                value: calculatedItemTotal, // Total of all items
                                                                 currency_code: "USD",
                                                             },
-                                                        }))
+                                                            shipping: {
+                                                                value: totalShipping, // Shipping charges
+                                                                currency_code: "USD",
+                                                            },
+                                                            discount: {
+                                                                value: `-${totalDiscount}`, // Discount negative
+                                                                currency_code: "USD",
+                                                            },
+                                                            tax_total: {
+                                                                value: taxAmount, // Tax
+                                                                currency_code: "USD",
+                                                            },
+                                                        },
                                                     },
-                                                ],
+                                                    items: cart.map(item => ({
+                                                        name: item.title,
+                                                        quantity: item.quantity.toString(), // Quantity as string
+                                                        unit_amount: {
+                                                            value: item.price.toFixed(2), // Price per item, rounded to 2 decimals
+                                                            currency_code: "USD",
+                                                        },
+                                                    })),
+                                                },
+                                            ];
+                                            console.log("Purchase Units:", purchase_units);
+
+                                            return actions.order.create({
+                                                purchase_units,
                                             });
                                         }}
                                         onApprove={async (data, actions) => {
                                             return actions.order.capture().then((details) => {
-                                                alert(
-                                                    `Transaction completed by ${details.payer.name.given_name}`
-                                                );
-                                                // Notify backend
+                                                alert(`Transaction completed by ${details.payment_source.paypal.name.given_name}!`);
+                                                console.log("All details: ", details);
                                             });
                                         }}
                                         onCancel={() => {
                                             alert("Payment was cancelled by user.");
                                         }}
                                         onError={(err) => {
-                                            console.error("PayPal Button Error:", err);
+                                            console.error("PayPal Error:", err);
                                             alert("An error occurred during the transaction. Please try again.");
                                         }}
                                     />
                                 </div>
-                            </PayPalScriptProvider>
                         </div>
                     </Box>
                 </Modal>
