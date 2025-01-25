@@ -1,29 +1,25 @@
-#home{
-    background-image: url("/bg-img.png");
-    background-position: center;
-    background-size:cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+#home {
+  background-image: url("/bg-img.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
-/* @font-face {
-    font-family: 'MyCustomFont';
-    src: url('../assets/fonts/COUBRAFONT.woof2') format('woff2'),
-         url('../assets/fonts/COUBRAFONT.woff') format('woff');
-    font-weight: normal;
-    font-style: normal; 
-  } */
-
-.homeText{
-  font-family: "Lobster", sans-serif;
-  font-weight: 500;
+.homeText {
+  font-size: 5rem;
+  font-family: "Road Rage", serif;
+  font-weight: 600;
   font-style: normal;
-    color: black; /* Text color */
-    -webkit-text-stroke: 0px white; /* Modern browsers */
-    text-shadow: 
-        -1px -1px 0 white, 
-        1px -1px 0 white, 
-        -1px 1px 0 white, 
-        1px 1px 0 white; /* Fallback for older browsers */
-        letter-spacing: 0.1rem;
+  color: black;
+  /* Text color */
+  -webkit-text-stroke: 0px white;
+  /* Modern browsers */
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+  /* Fallback for older browsers */
+  /* letter-spacing: 0.1rem; */
 }

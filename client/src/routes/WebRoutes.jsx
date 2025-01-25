@@ -12,6 +12,7 @@ import SingleCategoryPage from '../pages/SingleCategoryPage';
 import CartPage from '../pages/CartPage';
 import CheckoutForm from '../components/CheckoutForm';
 import NotFound from '../components/NotFound';
+import Thank from '../components/Thank';
 
 
 const WebRoutes = () => {
@@ -31,6 +32,7 @@ const WebRoutes = () => {
                     <Route path="/shop/hoodies" element={<SingleCategoryPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path='/checkout' element={<CheckoutForm />} />
+                    <Route path='/thank-you' element={<Thank />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>

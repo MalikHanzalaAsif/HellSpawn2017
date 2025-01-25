@@ -2,7 +2,7 @@ import axios from "axios";
 import toastEmitter from "../components/ui/toast";
 
 
-export const addToCartApi = async (item) => {
+export const addToCartApi = async (item, navigate) => {
     try {
         let response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/cart`, item, {
             withCredentials: true,
@@ -10,6 +10,8 @@ export const addToCartApi = async (item) => {
         toastEmitter({
             title: response.data?.message,
             type: response.data?.type,
+            customButton: "View Cart",
+            navigate: navigate,
         });
     } catch (error) {
         console.log(error)

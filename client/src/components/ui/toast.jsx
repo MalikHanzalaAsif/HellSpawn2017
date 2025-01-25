@@ -11,6 +11,8 @@ const toastEmitter = ({
   draggable = true,
   progress,
   theme = "colored",
+  customButton = null, // Optional button component or function
+  navigate
 }) => {
   const options = {
     position,
@@ -20,24 +22,53 @@ const toastEmitter = ({
     pauseOnHover,
     draggable,
     progress,
-    theme
+    theme,
   };
+
+  // Render a custom toast content if `customButton` is provided
+  const toastContent = customButton ? (
+    <div>
+      <span>{title}</span>
+      <button
+        onClick={() => {
+          if (typeof customButton === "function") {
+            customButton(); // Call a function if provided
+          } else {
+            navigate("/cart"); // Redirect to cart page by default
+          }
+        }}
+        style={{
+          marginLeft: "16px",
+          padding: "5px 10px",
+          background: "transparent",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        {typeof customButton === "string" ? customButton : "Action"}
+      </button>
+    </div>
+  ) : (
+    title
+  );
 
   switch (type) {
     case "info":
-      toast.info(title, options);
+      toast.info(toastContent, options);
       break;
     case "warn":
-      toast.warn(title, options);
+      toast.warn(toastContent, options);
       break;
     case "success":
-      toast.success(title, options);
+      toast.success(toastContent, options);
       break;
     case "error":
-      toast.error(title, options);
+      toast.error(toastContent, options);
       break;
     default:
-      toast(title, options);
+      toast(toastContent, options);
       break;
   }
 };

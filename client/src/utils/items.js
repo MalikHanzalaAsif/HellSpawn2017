@@ -2,7 +2,7 @@ export const displayItems = [
   {
     "id": "73d96c3a-2d6c-4be5-bd44-ca1911e84ca1",
     "title": "Demo TShirt",
-    "price": 499.99,
+    "price": 1.99,
     "image": "/img/tshirt1.png",
     "category": "T-Shirts",
     "quantity": 1,

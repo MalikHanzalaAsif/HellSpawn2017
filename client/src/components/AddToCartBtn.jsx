@@ -42,7 +42,7 @@ const AddToCartBtn = ({ item }) => {
         } else {
             try {
                 setIsAddingItem(true);
-                await addToCartApi(item);
+                await addToCartApi(item, navigate);
                 handleClose();
 
             } catch (err) {

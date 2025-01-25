@@ -9,6 +9,7 @@ const dbUrl = process.env.MONGODB_URL;
 import contactRoutes from "./routes/contactRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js"
+import orderRoutes from "./routes/orderRoutes.js";
 import cookieParser from "cookie-parser";
 
 // DB CONNECTION
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use("/contact", contactRoutes);
 app.use(userRoutes);
 app.use(cartRoutes);
+app.use(orderRoutes);
 
 
 

@@ -7,6 +7,7 @@ import "../styles/Footer.css";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
     function handleSubmit(e) {
         e.preventDefault();
     };
@@ -25,19 +26,19 @@ const Footer = () => {
             </ul>
             <ul id="products">
                 <h2 className="text-lg font-semibold mb-8">PRODUCTS</h2>
-                <li className="footerLi"><Link to="/shop">Tshirts</Link></li>
-                <li className="footerLi"><Link to="/shop">Trousers</Link></li>
-                <li className="footerLi"><Link to="/shop">Hoodies</Link></li>
+                <li className="footerLi"><Link to="/shop/tshirts">Tshirts</Link></li>
+                <li className="footerLi"><Link to="/shop/trousers">Trousers</Link></li>
+                <li className="footerLi"><Link to="/shop/hoodies">Hoodies</Link></li>
                 <li className="footerLi"><Link to="/shop">Jackets</Link></li>
                 <li className="footerLi"><Link to="/shop">Sweatshirts</Link></li>
             </ul>
             <ul id="resources">
                 <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
-                <li className="footerLi"><a href="">Community</a></li>
-                <li className="footerLi"><a href="">Disclaimer</a></li>
-                <li className="footerLi"><a href="">License</a></li>
-                <li className="footerLi"><a href="">Privacy</a></li>
-                <li className="footerLi"><a href="">Partnerships</a></li>
+                <li className="footerLi"><a href="#">Community</a></li>
+                <li className="footerLi"><a href="#">Disclaimer</a></li>
+                <li className="footerLi"><a href="#">License</a></li>
+                <li className="footerLi"><a href="#">Privacy</a></li>
+                <li className="footerLi"><a href="#">Partnerships</a></li>
             </ul>
             <form id="subscribeToOurNewsLetter" className='flex flex-col mr-4' onSubmit={handleSubmit}>
                 <h2 className="text-lg font-semibold mb-8">SUBSCRIBE TO OUR NEWSLETTER</h2>
@@ -47,7 +48,7 @@ const Footer = () => {
         </div>
         <div id="lowerFooter" className='flex justify-between items-center p-4'>
             <p id="lowerFooterTerms" className="text-xs">Terms & Conditions  |  Privacy Policy</p>
-            <p id="lowerFooterRights" className="text-xs">All RIGHTS RESERVED © 2024 UNIQUE ADVERTISERS</p>
+            <p id="lowerFooterRights" className="text-xs">All RIGHTS RESERVED © {currentYear} UNIQUE ADVERTISERS</p>
             <div id="lowerFooterIcons" className=''>
                 <FacebookIcon fontSize='large' className='text-white hover:text-blue-500 cursor-pointer mx-1'/>
                 <InstagramIcon fontSize='large' className='text-white hover:text-pink-600 cursor-pointer mx-1'/>

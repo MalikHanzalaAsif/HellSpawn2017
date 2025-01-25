@@ -62,9 +62,7 @@ const CheckoutForm = () => {
     };
     const formState = watch();
 
-    const calculatedItemTotal = cart
-        .reduce((sum, item) => sum + item.price * item.quantity, 0)
-        .toFixed(2);
+    const calculatedItemTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
     const totalDiscount = "0.00";
     const totalShipping = "2.00";
     const taxAmount = "4.00";
@@ -303,7 +301,7 @@ const CheckoutForm = () => {
                                             label: "checkout",  // Options: 'pay', 'checkout', 'buynow', 'paypal', 'installment'
                                             layout: "vertical", // Options: 'horizontal', 'vertical'
                                             tagline: false, // Options: true, false (to show/hide tagline)
-                                            height: 45, // Set button height (optional)
+                                            height: 40, // Set button height (optional)
                                         }}
                                         createOrder={(data, actions) => {
                                             const purchase_units = [

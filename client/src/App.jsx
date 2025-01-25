@@ -45,7 +45,7 @@ function App() {
     <>
       <PayPalScriptProvider
         options={{
-          "client-id": import.meta.env.VITE_PAYPAL_CLIENT_ID,
+          "client-id": import.meta.env.VITE_PAYPAL_LIVE_CLIENT_ID,
           currency: "USD",
         }}
       >
