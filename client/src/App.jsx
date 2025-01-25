@@ -19,6 +19,7 @@ function App() {
       easing: "ease-in-out",
       once: true,
     });
+    
     const fetchUser = async () => {
       try {
         let userData = await getUserApi();
@@ -31,6 +32,7 @@ function App() {
         console.error("Failed to fetch user:", error);
       }
     };
+
     let fetchCart = async () => {
       try {
         let res = await getCartApi();

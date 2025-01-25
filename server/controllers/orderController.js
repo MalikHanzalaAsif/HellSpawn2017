@@ -29,7 +29,7 @@ const getOrderDetails = async (orderId, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
-        console.log("Order Details:", orderDetails.data); 
+        console.log("Order Details:", orderDetails); 
         return orderDetails.data;
     } catch (error) {
         console.error("Failed to get order details:", error);
@@ -48,7 +48,7 @@ const createOrder = async (user, orderDetails, transactionId) => {
             transactionId,
             userId: user.id,
             items: cart.items,
-            orderDetails: orderDetails,
+            orderDetails: orderDetails.data,
             total: orderDetails.purchase_units[0].amount.value,
         });
         await order.save();

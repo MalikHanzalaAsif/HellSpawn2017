@@ -102,12 +102,12 @@ const AddToCartBtn = ({ item }) => {
                 >
                     <Box sx={style} className="flex flex-col justify-center items-center">
                         <img src={item.image} alt={item.title} className='h-52 w-52' />
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                        <h2 id="modal-modal-title" className='text-2xl'>
                             {item.title}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2 }} className='font-semibold'>
+                        </h2>
+                        <p id="modal-modal-description" className='font-semibold my-4 text-lg'>
                             ${item.price}
-                        </Typography>
+                        </p>
                         <div>
                             <Button variant="contained" color="error" startIcon={<CloseIcon />} style={{ marginRight: "2rem", marginBottom: "0.5rem" }} onClick={handleClose}>
                                 close
