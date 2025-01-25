@@ -6,12 +6,19 @@ import { useUser } from './context/userContext';
 import { useCart } from "./context/cartContext";
 import { useEffect } from 'react';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const { user, setUser } = useUser();
   const { cart, setCart } = useCart();
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
     const fetchUser = async () => {
       try {
         let userData = await getUserApi();

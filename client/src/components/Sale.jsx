@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Sale = () => {
     return (
-        <section id="sale" className='mt-14 flex flex-col justify-center items-center'>
+        <section id="sale" className='mt-14 flex flex-col justify-center items-center' data-aos="fade-up">
             <div id="saleUpperText" className='text-lg leading-tight px-8 py-1'>
                 TAKE UPTO
             </div>

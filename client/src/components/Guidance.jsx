@@ -35,7 +35,7 @@ const Guidance = () => {
         <>
             <h1 className='text-4xl font-semibold my-8 text-center'>NEED GUIDANCE? WE'VE PROVIDED</h1>
             <section id='guidance' className='flex justify-between w-full mb-16'>
-                <div className="accordion-container">
+                <div className="accordion-container" data-aos="fade-up">
                     {questions.map((item, index) => (
                         <div key={index} className="accordion-item mb-4 flex flex-col justify-center">
                             <div
@@ -53,7 +53,7 @@ const Guidance = () => {
                         </div>
                     ))}
                 </div>
-                <div className="guidanceImage">
+                <div className="guidanceImage" data-aos="fade-up">
                     <img src="/img/superman-img.jpg" alt="super man" />
                 </div>
             </section>

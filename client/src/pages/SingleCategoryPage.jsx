@@ -23,6 +23,7 @@ const SingleCategoryPage = () => {
                         <div
                             className="item flex flex-col justify-center items-center p-4 max-w-60"
                             key={item.id}
+                            data-aos="fade-up"
                         >
                             <div className="itemImage bg-gray-100 rounded-3xl">
                                 <img src={item.image} alt={item.title} className="w-48 h-52" />
