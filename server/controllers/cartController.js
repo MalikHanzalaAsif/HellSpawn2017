@@ -11,7 +11,6 @@ export const addToCart = async (req, res) => {
                 message: "item added to cart",
                 type: "success"
             });
-            console.log("added to cart!");
             return;
         }
 
@@ -26,7 +25,6 @@ export const addToCart = async (req, res) => {
             message: "item added to cart",
             type: "success"
         });
-        console.log("added to cart!");
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -45,7 +43,6 @@ export const getCart = async (req, res) => {
             await cart.save();
         }
         res.json(cart.items);
-        console.log("sent cart")
     } catch (err) {
         console.error(err);
         return res.status(500).json({

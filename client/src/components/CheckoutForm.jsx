@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { verifyPaymentApi } from '../api/orderApi';
 
 const style = {
     position: 'absolute',
@@ -339,7 +340,7 @@ const CheckoutForm = () => {
                                                 },
                                             ];
                                             console.log("Purchase Units:", purchase_units);
-
+                                            
                                             return actions.order.create({
                                                 purchase_units,
                                             });
@@ -348,6 +349,7 @@ const CheckoutForm = () => {
                                             return actions.order.capture().then((details) => {
                                                 alert(`Transaction completed by ${details.payment_source.paypal.name.given_name}!`);
                                                 console.log("All details: ", details);
+                                                console.log(formState)
                                             });
                                         }}
                                         onCancel={() => {

@@ -17,11 +17,10 @@ export default function ProfileMenu() {
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
         <React.Fragment>
-          <Button variant="contained" {...bindTrigger(popupState)} className='z-50' style={{ zIndex: 1000, position: "fixed", right: "0.5rem", top: "7rem", backgroundColor: "#DE2104" }}>
+          <Button variant="contained" {...bindTrigger(popupState)} className='z-50' style={{ zIndex: 1000, position: "fixed", right: "0.5rem", top: "7rem", backgroundColor: "#DE2104", borderRadius: "50px" }}>
             <SettingsIcon className='mr-1' /> Dashboard
           </Button>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={popupState.close}>Orders</MenuItem>
             <Link to='/cart'>
               <MenuItem onClick={popupState.close}>Cart</MenuItem>
             </Link>

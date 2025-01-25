@@ -39,10 +39,10 @@ const toastEmitter = ({
         }}
         style={{
           marginLeft: "16px",
-          padding: "5px 10px",
+          padding: "4px",
           background: "transparent",
           color: "#fff",
-          border: "none",
+          border: "1px solid white",
           borderRadius: "5px",
           cursor: "pointer",
         }}
