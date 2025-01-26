@@ -24,6 +24,9 @@ export default function ProfileMenu() {
             <Link to='/cart'>
               <MenuItem onClick={popupState.close}>Cart</MenuItem>
             </Link>
+            <Link to='/orders'>
+              <MenuItem onClick={popupState.close}>Orders</MenuItem>
+            </Link>
             <MenuItem onClick={async () => {
               popupState.close();
               await logoutApi();

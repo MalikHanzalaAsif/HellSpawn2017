@@ -8,3 +8,13 @@ export const verifyPaymentApi = async (orderId, transactionId, formData) => {
         console.error("Failed to verify payment:", error);
     }
 };
+
+export const getOrdersApi = async () => {
+    try {
+        let response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/orders`, {withCredentials: true});
+        console.log("Orders:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Failed to get orders:", error);
+    }
+};
