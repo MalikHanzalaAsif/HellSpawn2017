@@ -8,9 +8,9 @@ import { CartProvider } from './context/cartContext.jsx';
 createRoot(document.getElementById('root')).render(
   <UserProvider>
     <CartProvider>
-      <StrictMode>
-        <App />
-      </StrictMode>
+        <StrictMode>
+          <App />
+        </StrictMode>
     </CartProvider>
   </UserProvider>
 )

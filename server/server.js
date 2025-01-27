@@ -1,10 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 const app = express();
 const port = 8081;
 import cors from "cors";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
-dotenv.config();
 const dbUrl = process.env.MONGODB_URL;
 import contactRoutes from "./routes/contactRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -29,7 +29,6 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-
 
 
 // ROUTES

@@ -13,7 +13,6 @@ import CartPage from '../pages/CartPage';
 import CheckoutForm from '../components/CheckoutForm';
 import NotFound from '../components/NotFound';
 import Thank from '../components/Thank';
-import OrdersPage from '../pages/OrdersPage';
 
 
 const WebRoutes = () => {
@@ -34,7 +33,6 @@ const WebRoutes = () => {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path='/checkout' element={<CheckoutForm />} />
                     <Route path='/thank-you' element={<Thank />} />
-                    <Route path='/orders' element={<OrdersPage />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>

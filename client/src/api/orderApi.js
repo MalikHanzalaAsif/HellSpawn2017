@@ -1,20 +1,15 @@
 import axios from "axios";
+import toastEmitter from "../components/ui/toast";
 
-export const verifyPaymentApi = async (orderId, transactionId, formData) => {
+export const verifyPaymentApi = async (orderId, formData) => {
     try {
-        let response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/verify-payment`, {orderId, transactionId}, {withCredentials: true});
+        let response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/verify-payment`, {orderId, formData}, {withCredentials: true});
         console.log("Payment verified:", response.data);
+        toastEmitter({
+            title: response.data.message,
+            type: response.data.type,
+        });
     } catch (error) {
         console.error("Failed to verify payment:", error);
-    }
-};
-
-export const getOrdersApi = async () => {
-    try {
-        let response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/orders`, {withCredentials: true});
-        console.log("Orders:", response.data);
-        return response.data;
-    } catch (error) {
-        console.error("Failed to get orders:", error);
     }
 };

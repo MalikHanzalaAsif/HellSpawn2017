@@ -294,73 +294,76 @@ const CheckoutForm = () => {
                                 change Details
                             </Button>
 
-                                <div className="mt-6">
-                                    <PayPalButtons
-                                        style={{
-                                            color: "silver", // Options: 'gold', 'blue', 'silver', 'white', 'black'
-                                            shape: "pill", // Options: 'rect', 'pill'
-                                            label: "checkout",  // Options: 'pay', 'checkout', 'buynow', 'paypal', 'installment'
-                                            layout: "vertical", // Options: 'horizontal', 'vertical'
-                                            tagline: false, // Options: true, false (to show/hide tagline)
-                                            height: 40, // Set button height (optional)
-                                        }}
-                                        createOrder={(data, actions) => {
-                                            const purchase_units = [
-                                                {
-                                                    amount: {
-                                                        value: calculatedTotal, // Must equal the sum of all breakdown values
-                                                        currency_code: "USD",
-                                                        breakdown: {
-                                                            item_total: {
-                                                                value: calculatedItemTotal, // Total of all items
-                                                                currency_code: "USD",
-                                                            },
-                                                            shipping: {
-                                                                value: totalShipping, // Shipping charges
-                                                                currency_code: "USD",
-                                                            },
-                                                            discount: {
-                                                                value: `-${totalDiscount}`, // Discount negative
-                                                                currency_code: "USD",
-                                                            },
-                                                            tax_total: {
-                                                                value: taxAmount, // Tax
-                                                                currency_code: "USD",
-                                                            },
-                                                        },
-                                                    },
-                                                    items: cart.map(item => ({
-                                                        name: item.title,
-                                                        quantity: item.quantity.toString(), // Quantity as string
-                                                        unit_amount: {
-                                                            value: item.price.toFixed(2), // Price per item, rounded to 2 decimals
+                            <div className="mt-6">
+                                <PayPalButtons
+                                    style={{
+                                        color: "silver", // Options: 'gold', 'blue', 'silver', 'white', 'black'
+                                        shape: "pill", // Options: 'rect', 'pill'
+                                        label: "checkout",  // Options: 'pay', 'checkout', 'buynow', 'paypal', 'installment'
+                                        layout: "vertical", // Options: 'horizontal', 'vertical'
+                                        tagline: false, // Options: true, false (to show/hide tagline)
+                                        height: 40, // Set button height (optional)
+                                    }}
+                                    createOrder={(data, actions) => {
+                                        const purchase_units = [
+                                            {
+                                                amount: {
+                                                    value: calculatedTotal, // Must equal the sum of all breakdown values
+                                                    currency_code: "USD",
+                                                    breakdown: {
+                                                        item_total: {
+                                                            value: calculatedItemTotal, // Total of all items
                                                             currency_code: "USD",
                                                         },
-                                                    })),
+                                                        shipping: {
+                                                            value: totalShipping, // Shipping charges
+                                                            currency_code: "USD",
+                                                        },
+                                                        discount: {
+                                                            value: `-${totalDiscount}`, // Discount negative
+                                                            currency_code: "USD",
+                                                        },
+                                                        tax_total: {
+                                                            value: taxAmount, // Tax
+                                                            currency_code: "USD",
+                                                        },
+                                                    },
                                                 },
-                                            ];
-                                            console.log("Purchase Units:", purchase_units);
-                                            
-                                            return actions.order.create({
-                                                purchase_units,
-                                            });
-                                        }}
-                                        onApprove={async (data, actions) => {
-                                            return actions.order.capture().then((details) => {
-                                                alert(`Transaction completed by ${details.payment_source.paypal.name.given_name}!`);
-                                                console.log("All details: ", details);
-                                                console.log(formState)
-                                            });
-                                        }}
-                                        onCancel={() => {
-                                            alert("Payment was cancelled by user.");
-                                        }}
-                                        onError={(err) => {
-                                            console.error("PayPal Error:", err);
-                                            alert("An error occurred during the transaction. Please try again.");
-                                        }}
-                                    />
-                                </div>
+                                                items: cart.map(item => ({
+                                                    name: item.title,
+                                                    quantity: item.quantity.toString(), // Quantity as string
+                                                    unit_amount: {
+                                                        value: item.price.toFixed(2), // Price per item, rounded to 2 decimals
+                                                        currency_code: "USD",
+                                                    },
+                                                })),
+                                            },
+                                        ];
+                                        console.log("Purchase Units:", purchase_units);
+
+                                        return actions.order.create({
+                                            purchase_units,
+                                        });
+                                    }}
+                                    onApprove={async (data, actions) => {
+                                        return actions.order.capture().then(async (details) => {
+                                            const payerName =
+                                                details?.payer?.name?.given_name || "the buyer";
+                                            alert(`Transaction completed by ${payerName}!`);
+                                            console.log("All details: ", details);
+                                            console.log(formState);
+                                            await verifyPaymentApi(details.id, formState);
+                                        });
+                                    }}
+                                    onCancel={() => {
+                                        alert("Payment was cancelled by user.");
+                                    }}
+                                    onError={(err) => {
+                                        console.error("PayPal Error:", err);
+                                        alert("An error occurred during the transaction. Please try again.");
+                                    }}
+                                />
+                            </div>
                         </div>
                     </Box>
                 </Modal>

@@ -7,24 +7,28 @@ const Guidance = () => {
 
     const questions = [
         {
-            question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet consequatur vero pariatur voluptate error est doloremque expedita sapiente officia amet totam ullam necessitatibus voluptatem id, quibusdam ea tenetur aperiam",
+            question: "What types of products can I order on Hellspawn?",
+            answer: "You may order a vast array of goods on Hellspawn, such as t-shirts, sweatshirts, mugs, phone cases, caps, trousers and pants, mousepad, and more. We provide a wide range of products to assist you in making personalized merchandise for events, companies, individuals, or artistic endeavors. Just choose the product you wish to design, add your artwork, and personalize it as you see fit!",
         },
         {
-            question: "Itaque eveniet consequatur vero pariatur voluptate error est doloremque?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet consequatur vero pariatur voluptate error est doloremque expedita sapiente officia amet totam ullam necessitatibus voluptatem id, quibusdam ea tenetur aperiam",
+            question: "How long will it take for my order to be delivered?",
+            answer: "The things you ordered and your location will affect the delivery time. Production usually takes two to four business days. Shipping typically takes 3–7 business days for domestic purchases and 7–14 days for overseas orders after your order is processed. As soon as your package ships, you will receive a tracking number so you can monitor its progress!",
         },
         {
-            question: "officia amet totam ullam necessitatibus voluptatem id?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet consequatur vero pariatur voluptate error est doloremque expedita sapiente officia amet totam ullam necessitatibus voluptatem id, quibusdam ea tenetur aperiam",
+            question: "Can I return or exchange my merch?",
+            answer: "We want your order to be perfect for you! Within 30 days of receiving your order, we provide free returns or exchanges if there is a problem with the goods (such as a defective item or an inappropriate design). Just get in touch with our customer support representatives, and they will walk you through the steps. Please be aware that due to the bespoke nature of each item, we are unable to accept returns for things that have a design you have selected, unless there is a flaw.",
         },
         {
-            question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet consequatur vero pariatur voluptate error est doloremque expedita sapiente officia amet totam ullam necessitatibus voluptatem id, quibusdam ea tenetur aperiam",
+            question: "Do you offer discounts for bulk orders?",
+            answer: "Indeed! We provide bulk order savings if you're wanting to place a sizable order for a company, event, or group. The discount increases with the number of things you order. For pricing information, see our bulk order page. Alternatively, feel free to get in touch with our sales staff for a quote tailored to your requirements.",
         },
         {
-            question: "Itaque eveniet consequatur vero pariatur voluptate error est doloremque?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet consequatur vero pariatur voluptate error est doloremque expedita sapiente officia amet totam ullam necessitatibus voluptatem id, quibusdam ea tenetur aperiam",
+            question: "Do you ship internationally?",
+            answer: "Yes, we provide international shipping! We ship internationally to the majority of nations, and the cost of shipping is determined by your location. Customs procedures may cause international orders to take longer to arrive, but don't worry—we'll give you tracking information so you can monitor the status of your transaction.",
+        },
+        {
+            question: "What if my order is damaged or incorrect?",
+            answer: "Please contact our customer care staff right away if your order arrives damaged or if we sent you the incorrect item. Depending on the circumstances, we will either offer a replacement or a refund. To help you as soon as possible, be sure to attach pictures of the damage or error. Our first goal is client pleasure, and we'll do all in our power to address any problems as soon as they arise.",
         },
     ];
 

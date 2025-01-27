@@ -28,6 +28,38 @@ const options = [
     name: "Hoodies",
     url: "/shop/hoodies",
   },
+  {
+    name: "Caps",
+    url: "/shop/caps",
+  },
+  {
+    name: "Sweatshirts",
+    url: "/shop/sweatshirts",
+  },
+  {
+    name: "Keychains",
+    url: "/shop/keychains",
+  },
+  {
+    name: "Notebooks",
+    url: "/shop/notebooks",
+  },
+  {
+    name: "Mousepads",
+    url: "/shop/mousepads",
+  },
+  {
+    name: "Mobile covers",
+    url: "/shop/mobile-covers",
+  },
+  {
+    name: "Shorts",
+    url: "/shop/shorts",
+  },
+  {
+    name: "Mugs",
+    url: "/shop/mugs",
+  },
 ];
 
 export default function SplitButton() {
@@ -118,7 +150,11 @@ export default function SplitButton() {
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList id="split-button-menu" autoFocusItem>
+                  <MenuList
+                    id="split-button-menu"
+                    autoFocusItem
+                    style={{ maxHeight: 200, overflowY: 'auto' }} // Set max height and enable scrolling
+                  >
                     {options.map((option, index) => (
                       <MenuItem
                         key={option.name}
