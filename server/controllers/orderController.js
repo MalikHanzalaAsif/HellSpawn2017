@@ -1,6 +1,5 @@
 import axios from 'axios';
 import nodemailer from 'nodemailer';
-import Cart from '../models/Cart.js';
 
 const getAccessToken = async () => {
     try {
@@ -52,7 +51,6 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
 
         // Generate a dynamic string for all cart items, including size
         const cartItemsString = orderDetails.purchase_units[0].items.map((item, index) => {
-            console.log(item); // Log the item to inspect it
             return `
                 ITEM ${index + 1}:
                 - Name: ${item.name}
