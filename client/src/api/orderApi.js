@@ -10,5 +10,9 @@ export const verifyPaymentApi = async (orderId, formData) => {
         });
     } catch (error) {
         console.error("Failed to verify payment:", error);
+        toastEmitter({
+            title: "payment verification failed",
+            type: "error",
+        });
     }
 };

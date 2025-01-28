@@ -5,7 +5,7 @@ const app = express();
 const port = 8081;
 import cors from "cors";
 import mongoose from "mongoose";
-const dbUrl = process.env.MONGODB_URL;
+const dbUrl = process.env.MONGOATLAS_URL;
 import contactRoutes from "./routes/contactRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js"
@@ -14,9 +14,12 @@ import cookieParser from "cookie-parser";
 
 // DB CONNECTION
 mongoose
-  .connect(dbUrl)
-  .then(() => console.log("connected to database"))
-  .catch((err) => console.log("error connecting to database: ", err));
+  .connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("connected to mongo atlas database"))
+  .catch((err) => console.log("error connecting to mongo atlas database: ", err));
 
 // MIDDLEWARES
 app.use(

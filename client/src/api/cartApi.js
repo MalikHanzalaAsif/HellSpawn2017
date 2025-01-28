@@ -35,6 +35,9 @@ export const getCartApi = async () => {
 
 export const removeFromCartApi = async (id, updateCart) => { 
     try{
+        if (updateCart) {
+            updateCart(id);
+        }
         let response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/cart/${id}`, {
             withCredentials: true
         });
@@ -42,9 +45,6 @@ export const removeFromCartApi = async (id, updateCart) => {
             title: response.data?.message,
             type: response.data?.type,
         });
-        if (updateCart) {
-            updateCart(id);
-        }
     }  catch(err) {
         console.log(err);
     }
