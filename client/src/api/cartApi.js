@@ -55,7 +55,6 @@ export const addQuantityApi = async (id) => {
         const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/cart/add/${id}`, {} ,{
             withCredentials: true
         });
-        console.log(response.data)
     } catch (err) {
         return;
     }
@@ -66,7 +65,6 @@ export const subtractQuantityApi = async (id) => {
         const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/cart/sub/${id}`, {} ,{
             withCredentials: true
         });
-        console.log(response.data)
     } catch (err) {
         return;
     };
@@ -77,7 +75,6 @@ export const changeSizeApi = async (id, size) => {
         const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/cart/size/${id}`, { size }, {
             withCredentials: true
         });
-        console.log(response.data)
     } catch (err) {
         return
     }

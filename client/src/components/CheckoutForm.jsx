@@ -59,7 +59,6 @@ const CheckoutForm = () => {
             return;
         }
         handleOpen();
-        console.log(data);
     };
     const formState = watch();
 
@@ -336,11 +335,10 @@ const CheckoutForm = () => {
                                                         value: item.price.toFixed(2), // Price per item, rounded to 2 decimals
                                                         currency_code: "USD",
                                                     },
+                                                    description: `${item.size || "Not specified"}`, // Description (optional)
                                                 })),
                                             },
                                         ];
-                                        console.log("Purchase Units:", purchase_units);
-
                                         return actions.order.create({
                                             purchase_units,
                                         });
@@ -350,9 +348,8 @@ const CheckoutForm = () => {
                                             const payerName =
                                                 details?.payer?.name?.given_name || "the buyer";
                                             alert(`Transaction completed by ${payerName}!`);
-                                            console.log("All details: ", details);
-                                            console.log(formState);
                                             await verifyPaymentApi(details.id, formState);
+                                            navigate("/thank-you");
                                         });
                                     }}
                                     onCancel={() => {
@@ -372,4 +369,4 @@ const CheckoutForm = () => {
     )
 }
 
-export default CheckoutForm
+export default CheckoutForm;

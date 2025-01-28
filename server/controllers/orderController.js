@@ -32,7 +32,6 @@ const getOrderDetails = async (orderId, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
-        console.log("Order Details:", response.data); // Optional: For debugging
         return response.data;
     } catch (error) {
         console.error("Failed to get order details:", error.message);
@@ -43,7 +42,6 @@ const getOrderDetails = async (orderId, accessToken) => {
 
 export const sendEmails = async (formData, user, orderDetails, orderId) => {
     try {
-        const cart = await Cart.findOne({ userId: user._id });
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -53,18 +51,18 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
         });
 
         // Generate a dynamic string for all cart items, including size
-        const cartItemsString = cart.items
-            .map(
-                (item, index) => `
+        const cartItemsString = orderDetails.purchase_units[0].items.map((item, index) => {
+            console.log(item); // Log the item to inspect it
+            return `
                 ITEM ${index + 1}:
                 - Name: ${item.name}
-                - Size: ${item.size || "Not specified"}  // Fallback if size is missing
+                - Size: ${item.description || "Not specified"}
                 - Quantity: ${item.quantity}
-                - Price: $${item.price.toFixed(2)}
-                - Total: $${(item.quantity * item.price).toFixed(2)}
-                `
-            )
-            .join("\n");
+                - Price: $${Number(item.unit_amount.value).toFixed(2)}
+                - Total: $${(item.quantity * Number(item.unit_amount.value)).toFixed(2)}
+            `;
+        }).join("\n");
+
 
         // Construct the email
         const ownerMailOptions = {
@@ -79,8 +77,7 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 ADDRESS: ${formData.address || "Not Provided"}
                 CITY: ${formData.city || "Not Provided"}
                 STATE: ${formData.state || "Not Provided"}
-                ZIP CODE: ${formData.zip || "Not Provided"}
-                CONTACT: ${number || "Not Provided"}
+                ZIP CODE: ${formData.zipCode || "Not Provided"}
                 
                 -------- ORDER DETAILS --------
                 ORDER ID: ${orderId}
@@ -98,12 +95,20 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 -------- ADDITIONAL INFO --------
                 ORDER TIME: ${orderDetails.create_time}
             `,
-        };        
+        };
+        const ownerInfo = await transporter.sendMail(ownerMailOptions);
+        console.log("Email sent successfully to owner:", ownerInfo.response);
+
         const userMailOptions = {
             from: process.env.FROM_EMAIL,
             to: user.email,
             subject: "Order placed succesfully on HellSpawn2017",
-            text: `Dear ${user.name}/${formData.firstName} ${formData?.lastName}! Thank you for your purchase. Your order has been placed successfully. Your order ID is ${orderId}. Check your paypal account for more details. if you have any queries feel free to reach us. Thanks!`
+            text: `Dear ${user.name}/${formData.firstName} ${formData?.lastName}!
+             Thank you for your purchase. 
+             Your order has been placed successfully.
+             Your order ID is ${orderId}. 
+             Check your paypal account for more details. 
+             if you have any queries feel free to reach us. Thanks!`
         };
         if (user.email === formData.email) {
             // Send email asynchronously
@@ -136,8 +141,8 @@ export const verifyPayment = async (req, res) => {
         const accessToken = await getAccessToken();
         const orderDetails = await getOrderDetails(orderId, accessToken);
         if (orderDetails.status === "COMPLETED") {
-            console.log("Verified Order Details:", orderDetails);
-            return res.json({ message: "Payment verified.", type: "success", orderDetails });
+            res.json({ message: "Payment verified.", type: "success", orderDetails });
+            await sendEmails(formData, user, orderDetails, orderId);
         } else {
             return res.status(400).json({ type: "error", message: "Payment not completed." });
         }
