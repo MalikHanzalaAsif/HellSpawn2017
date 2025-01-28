@@ -14,10 +14,7 @@ import cookieParser from "cookie-parser";
 
 // DB CONNECTION
 mongoose
-  .connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(dbUrl)
   .then(() => console.log("connected to mongo atlas database"))
   .catch((err) => console.log("error connecting to mongo atlas database: ", err));
 
