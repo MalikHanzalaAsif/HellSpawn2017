@@ -9,6 +9,7 @@ import { removeFromCartApi, addQuantityApi, subtractQuantityApi, changeSizeApi }
 const Cart = ({ isLoading }) => {
     const { cart, setCart } = useCart();
     const totalPrice = TotalPrice(cart, 0, 2, 4);
+    const unSizedCategories = ["Keychains", "Notebooks", "Mousepads", "Mobilecovers", "Mugs"];
 
     // add quantity
     async function addQuantity(itemId) {
@@ -82,21 +83,22 @@ const Cart = ({ isLoading }) => {
 
 
                                                 <div class="flex gap-4 mt-4 justify-center items-center">
-                                                    <div class="relative group">
-                                                        <select
-                                                            name="size"
-                                                            id="size"
-                                                            className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md mt-4"
-                                                            value={item.size}
-                                                            onChange={(event) => changeSize(item.id, event.target.value)}
-                                                        >
-                                                            <option value="SM">SM</option>
-                                                            <option value="MD">MD</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-
-                                                    </div>
+                                                    {!unSizedCategories.includes(item.category) && (
+                                                        <div className="relative group">
+                                                            <select
+                                                                name="size"
+                                                                id="size"
+                                                                className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md mt-4"
+                                                                value={item.size}
+                                                                onChange={(event) => changeSize(item.id, event.target.value)}
+                                                            >
+                                                                <option value="SM">SM</option>
+                                                                <option value="MD">MD</option>
+                                                                <option value="XL">XL</option>
+                                                                <option value="XXL">XXL</option>
+                                                            </select>
+                                                        </div>
+                                                    )}
 
                                                     <div>
                                                         <button type="button"
