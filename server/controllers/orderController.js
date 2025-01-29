@@ -4,19 +4,18 @@ import nodemailer from 'nodemailer';
 const getAccessToken = async () => {
     try {
         const auth = await axios.post(
-            `${process.env.PAYPAL_SANDBOX_API}/v1/oauth2/token`,
+            `${process.env.PAYPAL_LIVE_API}/v1/oauth2/token`,
             "grant_type=client_credentials",
             {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
                 auth: {
-                    username: process.env.PAYPAL_SANDBOX_CLIENT_ID,
-                    password: process.env.PAYPAL_SANDBOX_SECRET,
+                    username: process.env.PAYPAL_LIVE_CLIENT_ID,
+                    password: process.env.PAYPAL_LIVE_SECRET,
                 },
             }
         );
-        console.log("Access Token:", auth.data.access_token); // Optional: For debugging
         return auth.data.access_token;
     } catch (error) {
         console.error("Failed to get access token:", error.message);
@@ -26,7 +25,7 @@ const getAccessToken = async () => {
 
 const getOrderDetails = async (orderId, accessToken) => {
     try {
-        const response = await axios.get(`${process.env.PAYPAL_SANDBOX_API}/v2/checkout/orders/${orderId}`, {
+        const response = await axios.get(`${process.env.PAYPAL_LIVE_API}/v2/checkout/orders/${orderId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
@@ -41,6 +40,27 @@ const getOrderDetails = async (orderId, accessToken) => {
 
 export const sendEmails = async (formData, user, orderDetails, orderId) => {
     try {
+        const breakdown = orderDetails.purchase_units[0].amount.breakdown || {};
+
+        const sellerReceivableBreakdown = orderDetails.purchase_units[0].payments.captures[0].seller_receivable_breakdown || {};
+
+        const paypalFee = sellerReceivableBreakdown.paypal_fee ? `${sellerReceivableBreakdown.paypal_fee.value} ${sellerReceivableBreakdown.paypal_fee.currency_code}` : "N/A";
+
+        const exchangeRate = sellerReceivableBreakdown.exchange_rate ? `${sellerReceivableBreakdown.exchange_rate.target_currency} to ${sellerReceivableBreakdown.exchange_rate.source_currency} = ${sellerReceivableBreakdown.exchange_rate.value}` : "N/A";
+
+        const grossAmount = sellerReceivableBreakdown.gross_amount ? `${sellerReceivableBreakdown.gross_amount.value} ${sellerReceivableBreakdown.gross_amount.currency_code}` : "N/A";
+
+        const netAmount = sellerReceivableBreakdown.net_amount ? `${sellerReceivableBreakdown.net_amount.value} ${sellerReceivableBreakdown.net_amount.currency_code}` : "N/A";
+
+        const receivableAmount = sellerReceivableBreakdown.receivable_amount ? `${sellerReceivableBreakdown.receivable_amount.value} ${sellerReceivableBreakdown.receivable_amount.currency_code}` : "N/A";
+
+        const shipping = breakdown.shipping ? `${breakdown.shipping.value} ${breakdown.shipping.currency_code}` : "0.00";
+
+        const tax = breakdown.tax_total ? `${breakdown.tax_total.value} ${breakdown.tax_total.currency_code}` : "0.00";
+
+        const discount = breakdown.discount ? `${breakdown.discount}` : "0.00";
+
+
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -56,8 +76,8 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 - Name: ${item.name}
                 - Size: ${item.description || "Not specified"}
                 - Quantity: ${item.quantity}
-                - Price: $${Number(item.unit_amount.value).toFixed(2)}
-                - Total: $${(item.quantity * Number(item.unit_amount.value)).toFixed(2)}
+                - Price: ${Number(item.unit_amount.value).toFixed(2)} ${item.unit_amount.currency_code}
+                - Total: ${(item.quantity * Number(item.unit_amount.value)).toFixed(2)} ${item.unit_amount.currency_code}
             `;
         }).join("\n");
 
@@ -79,7 +99,17 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 
                 -------- ORDER DETAILS --------
                 ORDER ID: ${orderId}
-                TOTAL: $${orderDetails.purchase_units[0].amount.value}
+                TOTAL: ${orderDetails.purchase_units[0].amount.value} ${orderDetails.purchase_units[0].amount.currency_code}
+                PAYPAL FEE: ${paypalFee}
+                SHIPPING: ${shipping} 
+                TAX: ${tax} 
+                DISCOUNT: ${discount}
+                EXCHNAGE RATE: ${exchangeRate}
+                GROSS AMOUNT: ${grossAmount}
+                NET AMOUNT: ${netAmount}
+                FINAL AMOUNT RECEIVED: ${receivableAmount}
+
+                
                 CART ITEMS:
                 ${cartItemsString}
                 
@@ -94,6 +124,7 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 ORDER TIME: ${orderDetails.create_time}
             `,
         };
+
         const ownerInfo = await transporter.sendMail(ownerMailOptions);
         console.log("Email sent successfully to owner:", ownerInfo.response);
 
