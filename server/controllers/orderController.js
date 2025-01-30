@@ -113,7 +113,7 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 CART ITEMS:
                 ${cartItemsString}
                 
-                -------- PAYPAL ACCOUNT DETAILS --------
+                -------- CUSTOMER PAYPAL ACCOUNT DETAILS --------
                 ADDRESS: ${orderDetails.purchase_units[0].shipping.address.address_line_1 || "Not Provided"}
                 CITY: ${orderDetails.purchase_units[0].shipping.address.admin_area_2 || "Not Provided"}
                 STATE: ${orderDetails.purchase_units[0].shipping.address.admin_area_1 || "Not Provided"}
