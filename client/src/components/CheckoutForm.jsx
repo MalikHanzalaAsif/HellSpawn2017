@@ -144,19 +144,30 @@ const CheckoutForm = () => {
                                             }}
                                             render={({ field: { onChange, value } }) => (
                                                 <PhoneInput
-                                                    className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600 border-none outline-none"
+                                                    className="w-full text-sm rounded-md border-none outline-none"
                                                     country={"us"} // Default country
                                                     value={value}
                                                     onChange={onChange}
+                                                    placeholder="Phone No."
+                                                    enableSearch
+                                                    containerStyle={{
+                                                        width: "100%",
+                                                        backgroundColor: "rgb(243 244 246)",
+                                                    }}
                                                     inputStyle={{
                                                         fontSize: "1rem",
                                                         backgroundColor: "transparent",
                                                         border: "none",
                                                         outline: "none",
-                                                        height: "16px",
+                                                        height: "45px", // Adjust to match your bg height
+                                                        paddingLeft: "48px", // Space for flag
+                                                        width: "100%",
                                                     }}
-                                                    placeholder="Phone No."
-                                                    enableSearch
+                                                    buttonStyle={{
+                                                        backgroundColor: "transparent",
+                                                        border: "none",
+                                                        height: "45px", // Ensure it matches input height
+                                                    }}
                                                 />
                                             )}
                                         />
