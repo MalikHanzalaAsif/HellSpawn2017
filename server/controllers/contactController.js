@@ -24,7 +24,7 @@ export const sendEmail = async (req, res, next) => {
                    NAME: ${name}
                    EMAIL: ${email}
                    MESSAGE: ${message}
-                   CONTACT: ${number}
+                   CONTACT NO: ${number || "Not Provided"}
                    `
         };
         const userMailOptions = {
