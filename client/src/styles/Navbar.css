@@ -26,14 +26,8 @@
   nav{
       background-color: white;
       position: fixed;
-      top: 24px;
       z-index: 1000;
       width: 100vw;
-    }
-    @media (max-width: 1023px){
-      nav{
-          top: 0;
-      }
     }
     .navbar-logo a {
     color: #fff;

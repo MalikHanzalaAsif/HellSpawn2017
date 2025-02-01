@@ -15,6 +15,7 @@ const CartPage = () => {
                     return;
                 } else {
                     setCart(res);
+                    console.log(res);
                 }
             } catch (err) {
                 console.log(`error fetching cart: ${err}`);

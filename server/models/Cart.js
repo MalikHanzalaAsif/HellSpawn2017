@@ -17,6 +17,7 @@ const cartSchema = new Schema(
         title: { type: String, required: true },
         quantity: { type: Number, required: true, min: 1 },
         size: {type: String},
+        color: {type: String},
       },
     ],
   },

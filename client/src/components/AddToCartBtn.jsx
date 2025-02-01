@@ -10,6 +10,7 @@ import { useUser } from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
 import toastEmitter from './ui/toast';
 import { addToCartApi } from '../api/cartApi';
+import itemColors from '../utils/itemColors';
 
 const style = {
     position: 'absolute',
@@ -25,6 +26,7 @@ const style = {
 };
 
 const AddToCartBtn = ({ item }) => {
+    const [selectedColor, setSelectedColor] = useState(null);
     const [isAddingItem, setIsAddingItem] = useState(false)
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -108,11 +110,39 @@ const AddToCartBtn = ({ item }) => {
                         <p id="modal-modal-description" className='font-semibold my-4 text-lg'>
                             ${item.price}
                         </p>
+                        <p>select color:</p>
+                        <div className="flex justify-center gap-2 mb-4">
+                            {itemColors.map((color, index) => (
+                                <div
+                                    key={index}
+                                    className="relative group"
+                                >
+                                    {/* Tooltip */}
+                                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-700 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        {color.name}
+                                    </span>
+
+                                    {/* Color Circle */}
+                                    <div
+                                        className={`w-5 h-5 rounded-full cursor-pointer border-2 transition-all duration-300 ${selectedColor && selectedColor.name === color.name ? 'border-gray-800' : 'border-transparent'
+                                            }`}
+                                        style={{ backgroundColor: color.hex }}
+                                        onClick={() => {
+                                            setSelectedColor(color)
+                                            item.color = color.name
+                                        }
+                                        }
+                                        title={color.name} // Also adds a default browser tooltip
+                                    />
+                                </div>
+                            ))}
+                        </div>
                         <div>
+
                             <Button variant="contained" color="error" startIcon={<CloseIcon />} style={{ marginRight: "2rem", marginBottom: "0.5rem" }} onClick={handleClose}>
                                 close
                             </Button>
-                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />} onClick={() => addToCartFunc(item)} disabled={isAddingItem} style={{marginBottom: "0.5rem"}}>
+                            <Button variant="contained" color="success" startIcon={<ShoppingCartIcon />} onClick={() => addToCartFunc(item)} disabled={isAddingItem} style={{ marginBottom: "0.5rem" }}>
                                 {isAddingItem ? "Adding" : "Add to cart"}
                             </Button>
                         </div>
