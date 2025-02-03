@@ -1,18 +1,30 @@
 export default [
     {
-        name: "red",
-        hex: "#FF0000"
+        name: "Red",
+        hex: "#c41212"
     },
     {
-        name: "green",
-        hex: "#00FF00"
+        name: "Green",
+        hex: "#14c114"
     },
     {
-        name: "blue",
-        hex: "#0000FF"
+        name: "Blue",
+        hex: "#1632bf"
     },
     {
-        name: "yellow",
-        hex: "#FFFF00"
+        name: "Yellow",
+        hex: "#fff800"
+    },
+    {
+        name: "Cyan",
+        hex: "#00e7ff"
+    },
+    {
+        name: "Purple",
+        hex: "#9b00ff"
+    },
+    {
+        name: "Black",
+        hex: "#000000"
     },
 ]

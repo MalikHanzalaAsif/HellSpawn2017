@@ -1,9 +1,9 @@
 export const displayItems = [
   {
     "id": "73d96c3a-2d6c-4be5-bd44-ca1911e84ca1",
-    "title": "Demo TShirt",
-    "price": 1.99,
-    "image": "/img/tshirt1.png",
+    "title": "TShirts",
+    "price": 18.25,
+    "image": "/mockups/TShirtsWhite.png",
     "category": "T-Shirts",
     "quantity": 1,
     "size": "MD",
@@ -11,127 +11,38 @@ export const displayItems = [
   },
   {
     "id": "20f57e40-f4ba-40ba-b31f-3ac2bc4234b0",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt2.png",
-    "category": "T-Shirts",
+    "title": "Hoodies",
+    "price": 25.96,
+    "image": "/mockups/HoodiesWhite.png",
+    "category": "Hoodies",
     "quantity": 1,
     "size": "MD",
     "color": "white"
   },
   {
     "id": "8a1a30e8-79c9-4ae8-8cbc-12ffd08709ee",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt3.png",
-    "category": "T-Shirts",
+    "title": "Caps",
+    "price": 22.47,
+    "image": "/mockups/CapsWhite.png",
+    "category": "Caps",
     "quantity": 1,
     "size": "MD",
     "color": "white"
   },
   {
     "id": "30f26006-3680-4e00-a1e5-7bd65ccb0ac0",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt4.png",
-    "category": "T-Shirts",
+    "title": "Mobile Covers",
+    "price": 7.89,
+    "image": "/mockups/Mobile CoversWhite.png",
+    "category": "Mobile Covers",
     "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "8840726a-bd88-474b-99f9-da033355e080",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt5.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "0e62f783-6063-473a-b69e-0e5ce9d52be6",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt6.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "207eb4e8-2009-449b-bf46-5a212481556d",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt7.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "f1010463-89a4-437b-8456-d614f956313f",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt8.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "242a7f8d-de8f-4d9b-b40b-49685b366b9e",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt9.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
     "color": "white"
   },
 ];
 
 export const shopItems = [
-  {
-    "id": "73d96c3a-2d6c-4be5-bd44-ca1911e84ca1",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt1.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "20f57e40-f4ba-40ba-b31f-3ac2bc4234b0",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt2.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "8a1a30e8-79c9-4ae8-8cbc-12ffd08709ee",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt3.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
-  {
-    "id": "30f26006-3680-4e00-a1e5-7bd65ccb0ac0",
-    "title": "Demo TShirt",
-    "price": 499.99,
-    "image": "/img/tshirt4.png",
-    "category": "T-Shirts",
-    "quantity": 1,
-    "size": "MD",
-    "color": "white"
-  },
+
+
   {
     "id": "8840726a-bd88-474b-99f9-da033355e080",
     "title": "Demo TShirt",

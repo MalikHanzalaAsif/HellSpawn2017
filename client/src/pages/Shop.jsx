@@ -11,7 +11,7 @@ const Shop = () => {
             <section id="shop" className="pt-10">
                 <h1 className="text-center text-5xl font-semibold mb-8">Shop By Categories</h1>
                 <div
-                    id="products"
+                   id="products"
                     className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
                 >
                     {shopItems.map((item) => (
@@ -21,7 +21,7 @@ const Shop = () => {
                             data-aos="fade-up"
                         >
                             <div className="itemImage bg-gray-100 rounded-3xl">
-                                <img src={item.image} alt={item.title} className="w-48 h-52" />
+                                <img src={item.image} alt={item.title} className="w-44 h-52" />
                             </div>
                             <p className="mt-2">{item.title}</p>
                             <Rating
@@ -45,3 +45,4 @@ const Shop = () => {
 };
 
 export default Shop;
+ 

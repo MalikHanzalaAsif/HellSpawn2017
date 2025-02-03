@@ -71,15 +71,30 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
 
         // Generate a dynamic string for all cart items, including size
         const cartItemsString = orderDetails.purchase_units[0].items.map((item, index) => {
+            // Extract size and color using string methods
+            let size = "Not specified";
+            let color = "Not specified";
+
+            if (item.description) {
+                const parts = item.description.split(","); // Split at ","
+
+                if (parts.length > 1) {
+                    size = parts[0].split(":")[1].trim();  // Get value after "Size:"
+                    color = parts[1].split(":")[1].trim(); // Get value after "Color:"
+                }
+            }
+
             return `
                 ITEM ${index + 1}:
                 - Name: ${item.name}
-                - Size: ${item.description || "Not specified"}
-                - Quantity: ${item.quantity}
+                - Size: ${size}
+                - Color: ${color}
+                - Quantity: ${item.quantity || 1}
                 - Price: ${Number(item.unit_amount.value).toFixed(2)} ${item.unit_amount.currency_code}
                 - Total: ${(item.quantity * Number(item.unit_amount.value)).toFixed(2)} ${item.unit_amount.currency_code}
             `;
         }).join("\n");
+
 
 
         // Construct the email

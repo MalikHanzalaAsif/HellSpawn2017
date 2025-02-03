@@ -319,23 +319,23 @@ const CheckoutForm = () => {
                                             {
                                                 amount: {
                                                     value: calculatedTotal, // Must equal the sum of all breakdown values
-                                                    currency_code: "USD",
+                                                    currency_code: "EUR",
                                                     breakdown: {
                                                         item_total: {
                                                             value: calculatedItemTotal, // Total of all items
-                                                            currency_code: "USD",
+                                                            currency_code: "EUR",
                                                         },
                                                         shipping: {
                                                             value: totalShipping, // Shipping charges
-                                                            currency_code: "USD",
+                                                            currency_code: "EUR",
                                                         },
                                                         discount: {
                                                             value: `-${totalDiscount}`, // Discount negative
-                                                            currency_code: "USD",
+                                                            currency_code: "EUR",
                                                         },
                                                         tax_total: {
                                                             value: taxAmount, // Tax
-                                                            currency_code: "USD",
+                                                            currency_code: "EUR",
                                                         },
                                                     },
                                                 },
@@ -344,9 +344,9 @@ const CheckoutForm = () => {
                                                     quantity: item.quantity.toString(), // Quantity as string
                                                     unit_amount: {
                                                         value: item.price.toFixed(2), // Price per item, rounded to 2 decimals
-                                                        currency_code: "USD",
+                                                        currency_code: "EUR",
                                                     },
-                                                    description: `${item.size || "Not specified"}`, // Description (optional)
+                                                    description: `Size: ${item.size || "Not specified"}, Color: ${item.color || "Not specified"}`, // Concatenated size and color
                                                 })),
                                             },
                                         ];
