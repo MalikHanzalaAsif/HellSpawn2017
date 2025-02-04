@@ -37,6 +37,10 @@ app.use(userRoutes);
 app.use(cartRoutes);
 app.use(orderRoutes);
 
+// route for getting ping req to stay wake app
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 
 
