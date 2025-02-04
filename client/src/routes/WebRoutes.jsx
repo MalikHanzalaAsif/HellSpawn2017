@@ -30,6 +30,14 @@ const WebRoutes = () => {
                     <Route path="/shop/tshirts" element={<SingleCategoryPage />} />
                     <Route path="/shop/trousers" element={<SingleCategoryPage />} />
                     <Route path="/shop/hoodies" element={<SingleCategoryPage />} />
+                    <Route path="/shop/mugs" element={<SingleCategoryPage />} />
+                    <Route path="/shop/notebooks" element={<SingleCategoryPage />} />
+                    <Route path="/shop/caps" element={<SingleCategoryPage />} />
+                    <Route path="/shop/shorts" element={<SingleCategoryPage />} />
+                    <Route path="/shop/mobilecovers" element={<SingleCategoryPage />} />
+                    <Route path="/shop/sweatshirts" element={<SingleCategoryPage />} />
+                    <Route path="/shop/mousepads" element={<SingleCategoryPage />} />
+                    <Route path="/shop/keychains" element={<SingleCategoryPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path='/checkout' element={<CheckoutForm />} />
                     <Route path='/thank-you' element={<Thank />} />

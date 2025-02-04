@@ -8,8 +8,8 @@ import { removeFromCartApi, addQuantityApi, subtractQuantityApi, changeSizeApi }
 
 const Cart = ({ isLoading }) => {
     const { cart, setCart } = useCart();
-    const totalPrice = TotalPrice(cart, 0, 2, 4);
-    const unSizedCategories = ["Keychains", "Notebooks", "Mousepads", "Mobilecovers", "Mugs"];
+    const totalPrice = TotalPrice(cart, 0, 0, 0);
+    const unSizedCategories = ["Key Chains", "Note Books", "Mouse Pads", "Mobile Covers", "Mugs"];
 
     // add quantity
     async function addQuantity(itemId) {
@@ -81,6 +81,7 @@ const Cart = ({ isLoading }) => {
                                                 <h3 className="text-base font-bold text-gray-800">{item.title}</h3>
                                                 <button className="text-xs cursor-pointer mt-0.5 text-white bg-red-600 p-1 rounded" onClick={() => removeItem(item.id)}>Remove</button>
 
+                                                <div className='font-semibold mt-2'>{item.color}</div>
 
                                                 <div class="flex gap-4 mt-4 justify-center items-center">
                                                     {!unSizedCategories.includes(item.category) && (
@@ -126,8 +127,8 @@ const Cart = ({ isLoading }) => {
                         <div className="bg-gray-100 rounded-md p-4 md:sticky top-32 h-fit">
                             <ul className="text-gray-800 mt-8 space-y-4">
                                 <li className="flex flex-wrap gap-4 text-base">Discount <span className="ml-auto font-bold">$0.00</span></li>
-                                <li className="flex flex-wrap gap-4 text-base">Shipping <span className="ml-auto font-bold">$2.00</span></li>
-                                <li className="flex flex-wrap gap-4 text-base">Tax <span className="ml-auto font-bold">$4.00</span></li>
+                                <li className="flex flex-wrap gap-4 text-base">Shipping <span className="ml-auto font-bold">$0.00</span></li>
+                                <li className="flex flex-wrap gap-4 text-base">Tax <span className="ml-auto font-bold">$0.00</span></li>
                                 <li className="flex flex-wrap gap-4 text-base font-bold">Total <span className="ml-auto">${totalPrice}
                                 </span></li>
                             </ul>

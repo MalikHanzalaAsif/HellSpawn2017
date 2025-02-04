@@ -47,6 +47,10 @@ export const removeFromCartApi = async (id, updateCart) => {
         });
     }  catch(err) {
         console.log(err);
+        toastEmitter({
+            title: err?.message,
+            type: "error",
+        });
     }
 };
 

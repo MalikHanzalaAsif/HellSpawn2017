@@ -50,7 +50,7 @@ const options = [
   },
   {
     name: "Mobile covers",
-    url: "/shop/mobile-covers",
+    url: "/shop/mobilecovers",
   },
   {
     name: "Shorts",

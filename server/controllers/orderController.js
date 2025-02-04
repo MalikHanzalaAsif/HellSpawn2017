@@ -25,7 +25,7 @@ const getAccessToken = async () => {
 
 const getOrderDetails = async (orderId, accessToken) => {
     try {
-        const response = await axios.get(`${process.env.PAYPAL_LIVE_API}/v2/checkout/orders/${orderId}`, {
+        const response = await axios.get(`${process.env.LIVE_SANDBOX_API}/v2/checkout/orders/${orderId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
@@ -112,6 +112,11 @@ export const sendEmails = async (formData, user, orderDetails, orderId) => {
                 STATE: ${formData.state || "Not Provided"}
                 ZIP CODE: ${formData.zipCode || "Not Provided"}
                 
+                -------- HELLSPAWN PROFILE DETAILS --------
+                NAME: ${user.name}
+                EMAIL: ${user.email}
+                ID: ${user.id}
+
                 -------- ORDER DETAILS --------
                 ORDER ID: ${orderId}
                 TOTAL: ${orderDetails.purchase_units[0].amount.value} ${orderDetails.purchase_units[0].amount.currency_code}

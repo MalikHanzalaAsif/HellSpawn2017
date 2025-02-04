@@ -15,7 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { verifyPaymentApi } from '../api/orderApi';
 
-const style = {
+const ModalStyles = {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -24,6 +24,8 @@ const style = {
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
+    overflowY: "auto",
+    maxHeight: "90vh",
 };
 
 const CheckoutForm = () => {
@@ -64,8 +66,8 @@ const CheckoutForm = () => {
 
     const calculatedItemTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
     const totalDiscount = "0.00";
-    const totalShipping = "2.00";
-    const taxAmount = "4.00";
+    const totalShipping = "0.00";
+    const taxAmount = "0.00";
 
     // Final total calculation
     const calculatedTotal = (
@@ -266,11 +268,7 @@ const CheckoutForm = () => {
                     aria-describedby="modal-modal-description"
 
                 >
-                    <Box sx={{
-                        ...style,
-                        overflowY: "auto",
-                        maxHeight: "90vh",
-                    }}>
+                    <Box sx={ModalStyles}>
                         <h1 id="modal-modal-title" variant="h4" component="h2" className='text-center text-4xl mb-4'>
                             Order Details
                         </h1>
@@ -359,6 +357,7 @@ const CheckoutForm = () => {
                                             const payerName =
                                                 details?.payer?.name?.given_name || "the buyer";
                                             alert(`Transaction completed by ${payerName}!`);
+                                            console.log(details)
                                             await verifyPaymentApi(details.id, formState);
                                             navigate("/thank-you");
                                         });

@@ -11,8 +11,9 @@ import { useNavigate } from 'react-router-dom';
 import toastEmitter from './ui/toast';
 import { addToCartApi } from '../api/cartApi';
 import itemColors from '../utils/itemColors';
+import GetCategoryDescription from "../utils/getCategoryDescription.js"
 
-const style = {
+const ModalStyles = {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -22,7 +23,9 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    borderRadius: "50px"
+    borderRadius: "50px",
+    overflowY: "auto",
+    maxHeight: "100vh",
 };
 
 const AddToCartBtn = ({ item }) => {
@@ -102,13 +105,17 @@ const AddToCartBtn = ({ item }) => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style} className="flex flex-col justify-center items-center">
+                    <Box sx={ModalStyles} 
+                    className="flex flex-col justify-center items-center">
                         <img src={item.image} alt={item.title} className='h-52 w-44' />
                         <h2 id="modal-modal-title" className='text-2xl'>
                             {item.title}
                         </h2>
                         <p id="modal-modal-description" className='font-semibold my-4 text-lg'>
                             € {item.price}
+                        </p>
+                        <p className='text-center text-sm mb-4' id='itemDescription'>
+                            {GetCategoryDescription(item.category)}
                         </p>
                         <p>select color:</p>
                         <div className="flex justify-center gap-2 mb-4 mt-2">
@@ -131,6 +138,7 @@ const AddToCartBtn = ({ item }) => {
                                             setSelectedColor(color)
                                             item.image = `/mockups/${item.title}${color.name}.png`
                                             item.color = color.name;
+                                            item.id = `${item.id}${color.name}`
                                         }
                                         }
                                         title={color.name} // Also adds a default browser tooltip
