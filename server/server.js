@@ -21,7 +21,7 @@ mongoose
 // MIDDLEWARES
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: [process.env.CLIENT_URL, process.env.CLIENT_URL_WWW],
     credentials: true,
   })
 );
