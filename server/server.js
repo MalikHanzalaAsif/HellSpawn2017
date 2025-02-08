@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 const app = express();
-const port = 8081;
+const port = process.env.PORT || 3000;
 import cors from "cors";
 import mongoose from "mongoose";
 const dbUrl = process.env.MONGOATLAS_URL;
