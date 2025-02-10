@@ -18,23 +18,20 @@ const Footer = () => {
                     <li className="footerLi"><Link to="/about">About</Link></li>
                     <li className="footerLi"><Link to="/shop">Shop</Link></li>
                     <li className="footerLi"><Link to="/shop">Categories</Link></li>
-                    <li className="footerLi"><Link to="/order">Contact</Link></li>
+                    <li className="footerLi"><Link to="/contact">Contact</Link></li>
                 </ul>
                 <ul id="products">
                     <h2 className="text-lg font-semibold mb-8">PRODUCTS</h2>
                     <li className="footerLi"><Link to="/shop/tshirts">Tshirts</Link></li>
                     <li className="footerLi"><Link to="/shop/trousers">Trousers</Link></li>
                     <li className="footerLi"><Link to="/shop/hoodies">Hoodies</Link></li>
-                    <li className="footerLi"><Link to="/shop">Jackets</Link></li>
-                    <li className="footerLi"><Link to="/shop">Sweatshirts</Link></li>
+                    <li className="footerLi"><Link to="/shop/sweatshirts">Sweatshirts</Link></li>
                 </ul>
                 <ul id="resources">
                     <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
-                    <li className="footerLi"><a href="#">Community</a></li>
-                    <li className="footerLi"><a href="#">Disclaimer</a></li>
-                    <li className="footerLi"><a href="#">License</a></li>
-                    <li className="footerLi"><a href="#">Privacy</a></li>
-                    <li className="footerLi"><a href="#">Partnerships</a></li>
+                    <li className="footerLi"><a href="https://uniqueadvertisers.io" target='_blank'>Partnerships</a></li>
+                    <li className="footerLi"><Link to="/">Terms & conditions</Link></li>
+                    <li className="footerLi"><Link to="/">Privacy Policy</Link></li>
                 </ul>
                 <form id="subscribeToOurNewsLetter" className='flex flex-col mr-4' onSubmit={handleSubmit}>
                     <h2 className="text-lg font-semibold mb-8">SUBSCRIBE TO OUR NEWSLETTER</h2>
@@ -45,10 +42,9 @@ const Footer = () => {
                     </div>
                 </form>
             </div>
-            <div id="lowerFooter" className='flex justify-between items-center p-4'>
-                <p id="lowerFooterTerms" className="text-xs">Terms & Conditions  |  Privacy Policy</p>
-                <p id="lowerFooterRights" className="text-xs">All RIGHTS RESERVED © {currentYear} UNIQUE ADVERTISERS</p>
-                <div id="lowerFooterIcons" className='flex'>
+            <div id="lowerFooter" className='flex flex-col justify-center items-center'>
+                <p id="lowerFooterRights" className="text-xs my-2">All RIGHTS RESERVED © {currentYear} UNIQUE ADVERTISERS</p>
+                <div id="lowerFooterIcons" className='flex my-2'>
                     <a href="https://www.facebook.com/bryan.brown353" target='_blank'>
                         <img src="/icons/facebook_icon.png" alt="facebook" className='w-8 mx-1 hover:opacity-75 transition' />
                     </a>
