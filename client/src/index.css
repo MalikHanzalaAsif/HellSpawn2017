@@ -32,6 +32,12 @@
 .footerLi{
    @apply text-sm text-gray-400 hover:text-blue-500 mb-2;
 }
+.subHeading{
+    @apply text-gray-800 text-2xl mt-4 mb-4;
+}
+.subPara{
+    @apply text-sm md:max-w-[70vw];
+}
 
 html {
     scroll-behavior: smooth;

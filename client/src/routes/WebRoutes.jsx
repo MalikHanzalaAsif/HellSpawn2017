@@ -13,6 +13,8 @@ import CartPage from '../pages/CartPage';
 import CheckoutForm from '../components/CheckoutForm';
 import NotFound from '../components/NotFound';
 import Thank from '../components/Thank';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
+import TermsConditions from '../pages/TermsConditions';
 
 
 const WebRoutes = () => {
@@ -41,6 +43,8 @@ const WebRoutes = () => {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path='/checkout' element={<CheckoutForm />} />
                     <Route path='/thank-you' element={<Thank />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms-and-conditions" element={<TermsConditions />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>

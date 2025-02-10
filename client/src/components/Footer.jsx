@@ -39,8 +39,8 @@ const Footer = () => {
                 <ul id="resources">
                     <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
                     <li className="footerLi"><a href="https://uniqueadvertisers.io" target='_blank'>Partnerships</a></li>
-                    <li className="footerLi"><Link to="/">Terms & conditions</Link></li>
-                    <li className="footerLi"><Link to="/">Privacy Policy</Link></li>
+                    <li className="footerLi"><Link to="/terms-and-conditions">Terms & conditions</Link></li>
+                    <li className="footerLi"><Link to="/privacy-policy">Privacy Policy</Link></li>
                 </ul>
                 <form id="subscribeToOurNewsLetter" className='flex flex-col mr-4' onSubmit={handleSubmit}>
                     <h2 className="text-lg font-semibold mb-8">SUBSCRIBE TO OUR NEWSLETTER</h2>
