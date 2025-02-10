@@ -6,13 +6,16 @@
   height: 100vh;
 }
 
-.homeText {
-  font-size: 5rem;
-  font-family: "Road Rage", serif;
-  font-weight: 600;
+@font-face {
+  font-family: 'CoubraFont';
+  src: url('../assets/fonts/CoubraFont.woff2') format('woff2'),
+       url('../assets/fonts/CoubraFont.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
-  color: black;
-  /* Text color */
+}
+
+.homeText {
+  font-family: 'CoubraFont', sans-serif;
   -webkit-text-stroke: 0px white;
   /* Modern browsers */
   text-shadow:
@@ -21,5 +24,10 @@
     -1px 1px 0 white,
     1px 1px 0 white;
   /* Fallback for older browsers */
-  /* letter-spacing: 0.1rem; */
+  letter-spacing: 0.1rem;
+  /* font-size: rem; */
+}
+
+.homeTextRed{
+  color: #DE2104;
 }
