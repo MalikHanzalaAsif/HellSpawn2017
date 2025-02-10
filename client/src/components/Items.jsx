@@ -13,13 +13,13 @@ const Items = () => {
             <section id="items" className="relative flex flex-wrap justify-center items-center gap-24">
                 {/* Iron Man Image */}
                 <img
-                    src="/img/iron-man.png"
+                    src="/img/flash-man.png"
                     alt="iron man"
                     className="absolute left-0 -top-10 h-64 object-contain z-10"
                 />
                 {/* Iron Woman Image */}
                 <img
-                    src="/img/iron-women.png"
+                    src="/img/wonder-woman.png"
                     alt="iron women"
                     className="absolute right-10 bottom-0 h-64 object-contain z-10"
                 />

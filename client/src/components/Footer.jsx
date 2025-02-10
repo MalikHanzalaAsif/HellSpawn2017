@@ -10,9 +10,9 @@ const Footer = () => {
 
     return (
         <footer id="footer">
-            <div id="upperFooter" className='bg-gray-100 flex justify-between items-center py-16'>
+            <div id="upperFooter" className='bg-gray-100 flex justify-between items-center py-16 flex-wrap'>
                 <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64' />
-                <ul id="usefullLinks">
+                <ul id="usefullLinks" className='mx-8'>
                     <h2 className="text-lg font-semibold mb-8">USEFUL LINKS</h2>
                     <li className="footerLi"><Link to="/">Home</Link></li>
                     <li className="footerLi"><Link to="/about">About</Link></li>
@@ -26,6 +26,15 @@ const Footer = () => {
                     <li className="footerLi"><Link to="/shop/trousers">Trousers</Link></li>
                     <li className="footerLi"><Link to="/shop/hoodies">Hoodies</Link></li>
                     <li className="footerLi"><Link to="/shop/sweatshirts">Sweatshirts</Link></li>
+                    <li className="footerLi"><Link to="/shop/caps">Caps</Link></li>
+                </ul>
+                <ul id="products" className='mt-8 mx-8'>
+                    <li className="footerLi"><Link to="/shop/keychains">Keychains</Link></li>
+                    <li className="footerLi"><Link to="/shop/notebooks">NoteBooks</Link></li>
+                    <li className="footerLi"><Link to="/shop/mousepads">MousePads</Link></li>
+                    <li className="footerLi"><Link to="/shop/mobilecovers">MobileCovers</Link></li>
+                    <li className="footerLi"><Link to="/shop/shorts">Shorts</Link></li>
+                    <li className="footerLi"><Link to="/shop/mugs">Mugs</Link></li>
                 </ul>
                 <ul id="resources">
                     <h2 className="text-lg font-semibold mb-8">RESOURCES</h2>
@@ -42,7 +51,7 @@ const Footer = () => {
                     </div>
                 </form>
             </div>
-            <div id="lowerFooter" className='flex flex-col justify-center items-center'>
+            <div id="lowerFooter" className='flex flex-col justify-center items-center' style={{backgroundColor: "#94cf1d"}}>
                 <p id="lowerFooterRights" className="text-xs my-2">All RIGHTS RESERVED © {currentYear} UNIQUE ADVERTISERS</p>
                 <div id="lowerFooterIcons" className='flex my-2'>
                     <a href="https://www.facebook.com/bryan.brown353" target='_blank'>
