@@ -10,7 +10,7 @@ const Footer = () => {
 
     return (
         <footer id="footer">
-            <div id="upperFooter" className='bg-gray-100 flex justify-between items-center py-16'>
+            <div id="upperFooter" className='bg-gray-100 flex justify-between items-center py-16 '>
                 <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64' />
                 <ul id="usefullLinks" className='mx-8'>
                     <h2 className="text-lg font-semibold mb-8">USEFUL LINKS</h2>
