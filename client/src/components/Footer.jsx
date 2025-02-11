@@ -1,5 +1,4 @@
 import React from 'react';
-import "../styles/Footer.css";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -10,9 +9,9 @@ const Footer = () => {
 
     return (
         <footer id="footer">
-            <div id="upperFooter" className='bg-gray-100 flex justify-between items-center py-16 '>
-                <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64' />
-                <ul id="usefullLinks" className='mx-8'>
+            <div id="upperFooter" className='bg-gray-100 flex lg:flex-row flex-col justify-between items-center py-16 '>
+                <img src="/HellSpawnLogo.png" alt="Hell Spawn Logo" className='max-h-64 max-w-64 mb-6 lg:mb-0' />
+                <ul id="usefullLinks" className='mx-8 mb-6 lg:mb-0'>
                     <h2 className="text-lg font-semibold mb-8">USEFUL LINKS</h2>
                     <li className="footerLi"><Link to="/">Home</Link></li>
                     <li className="footerLi"><Link to="/about">About</Link></li>

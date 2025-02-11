@@ -61,12 +61,12 @@
     }
   }
   
-  @media (width > 1024px) {
+  @media (min-width: 1024px) {
     .review-card{
       margin-right: 200px;
     }
   }
-  @media (width > 1500px) {
+  @media (min-width: 1500px) {
     .review-card{
       margin-right: 300px;
     }

@@ -1,4 +1,4 @@
-@media (width <= 350px) {
+@media (max-width: 350px) {
     #login{
         margin-top: 8rem;
     }

@@ -18,12 +18,12 @@
     }
 }
 
-@media (width > 1024px){
+@media (min-width: 1024px){
     html{
         font-size: 18px;
     }
 }
-@media (width > 1500px){
+@media (min-width: 1500px){
     html{
         font-size: 20px;
     }
