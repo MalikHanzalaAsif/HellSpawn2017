@@ -25,7 +25,7 @@ const getAccessToken = async () => {
 
 const getOrderDetails = async (orderId, accessToken) => {
     try {
-        const response = await axios.get(`${process.env.LIVE_SANDBOX_API}/v2/checkout/orders/${orderId}`, {
+        const response = await axios.get(`${process.env.PAYPAL_LIVE_API}/v2/checkout/orders/${orderId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
